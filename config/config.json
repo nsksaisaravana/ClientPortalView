@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "client-portal-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/clientPortal/ClientPortalWebPart.js",
+          "manifest": "./src/webparts/clientPortal/ClientPortalWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ClientPortalWebPartStrings": "lib/webparts/clientPortal/loc/{locale}.js"
+  }
+}
