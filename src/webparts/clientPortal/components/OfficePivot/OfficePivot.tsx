@@ -2,29 +2,32 @@ import * as React from 'react';
 import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import {BootstrapCarousel} from '../index';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
     root: { marginTop: 10 }
   };
   
-  export default class OfficePivot extends React.Component<{}, {}> {
+  export  class OfficePivot extends React.Component<{}, {}> {
 
     public render(): JSX.Element {
         return (
             <Pivot>
                 <PivotItem
-                headerText="NEWS"
+                headerText="PICURES"
                 headerButtonProps={{
                     'data-order': 1,
-                    'data-title': 'NEWS'
+                    'data-title': 'PICTURES'
                 }}
                 >
-                    <Label styles={labelStyles}>Pivot #1</Label>
+                   <div>
+                       <BootstrapCarousel></BootstrapCarousel>
+                   </div>
                 </PivotItem>
-                <PivotItem headerText="VIDEOS">
+                {/* <PivotItem headerText="VIDEOS">
                     <Label styles={labelStyles}>Pivot #2</Label>
-                </PivotItem>
-                <PivotItem headerText="PICTURES">
+                </PivotItem> */}
+                <PivotItem headerText="NEWS">
                     <Label styles={labelStyles}>Pivot #3</Label>
                 </PivotItem>
                 <PivotItem headerText="EVENTS">
@@ -33,11 +36,11 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 <PivotItem headerText="INVOICE & SIT">
                     <Label styles={labelStyles}>Pivot #3</Label>
                 </PivotItem>
-                <PivotItem headerText="ITEMS FOR REVIEW">
+                {/* <PivotItem headerText="ITEMS FOR REVIEW">
                     <Label styles={labelStyles}>Pivot #3</Label>
-                </PivotItem>
+                </PivotItem> */}
             </Pivot>
-        )
-    };
-  };
+        );
+    }
+  }
   
