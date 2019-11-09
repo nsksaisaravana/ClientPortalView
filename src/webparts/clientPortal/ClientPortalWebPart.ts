@@ -6,17 +6,29 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-
+import styles from './ClientPortalWebPart.module.scss';
 import * as strings from 'ClientPortalWebPartStrings';
 import ClientPortal from './components/ClientPortal/ClientPortal';
 import { IClientPortalProps } from './components/ClientPortal/IClientPortalProps';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import * as jQuery from "jquery";
+import { sp } from "@pnp/sp";
+import { initializeIcons } from 'office-ui-fabric-react';
 export interface IClientPortalWebPartProps {
   description: string;
 }
 
 export default class ClientPortalWebPart extends BaseClientSideWebPart<IClientPortalWebPartProps> {
+  private _styles: any | undefined;
+
+  public onInit(): Promise<void> {
+    sp.setup({
+      spfxContext: this.context
+    });
+    this._styles = styles;
+    initializeIcons();
+    return Promise.resolve();
+  }
 
   public render(): void {
 

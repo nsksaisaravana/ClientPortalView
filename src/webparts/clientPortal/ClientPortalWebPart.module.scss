@@ -1,0 +1,35 @@
+nav[role='navigation'] {
+    display: none !important;
+}
+div[class^='searchBox_'] {
+    display: none !important;
+}
+
+div[class^='spInnerCommentsWrapper_'] {
+  display: none !important;
+}
+
+
+div[class^='pageContainer_'] {
+    left: 0 !important;
+}
+
+div[class^='spNav_'] {
+  display: none !important;
+}
+
+div[class^='pageTitle_'] {
+  display: none !important;
+}
+
+div[class='commandBarWrapper'] {
+  display: none !important;
+}
+
+div[class='CanvasZone'] {
+  max-width:  none !important;
+}
+
+div[class='SPCanvas-canvas'] {
+  max-width:  none !important;
+}
