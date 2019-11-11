@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard} from '../index';
+import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard} from '../index';
 import {IOfficePivotStateValues} from './index';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
@@ -38,19 +38,35 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 >
                    <div >
                         <div className="row">
-                            <div className="col-sm col-md">
+                            <div className="col-sm">
                                 <BootstrapCarousel></BootstrapCarousel>
                             </div>
+                            <div className="col-sm">
+                                <BootstrapCarousel></BootstrapCarousel>
+                            </div>
+                            {/* <div className="col-sm col-md">
+                                
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></PrimeCard>
+                                <div className="row">
+                                    <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></PrimeCard>
+                                </div>
+                                <div className="row">
+                                    <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></PrimeCard>
+                                </div>
+                                <div className="row">
+                                    <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></PrimeCard>
+                                </div>
+                            </div> */}
+                        </div>
+                        <div className="row">
                             <div className="col-sm col-md">
-                                <div className="row">
-                                    <OfficeDocumentCardCompact propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeDocumentCardCompact>
-                                </div>
-                                <div className="row">
-                                    <OfficeDocumentCardCompact propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeDocumentCardCompact>
-                                </div>
-                                <div className="row">
-                                    <OfficeDocumentCardCompact propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeDocumentCardCompact>
-                                </div>
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></PrimeCard>
+                            </div>
+                            <div className="col-sm col-md">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></PrimeCard>
+                            </div>
+                            <div className="col-sm col-md">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></PrimeCard>
                             </div>
                         </div>
                     </div>
@@ -94,15 +110,36 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 </PivotItem> */}
                 <PivotItem headerText="EVENTS">
                     <div className="row">
-                        <OfficeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
-                        <OfficeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
-                        <OfficeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeCard>
-                        <OfficeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeCard>
-                        <OfficeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
+                        <div className="col">
+                            <OfficeCard propEventMonth={'November'} propEventDay={'25'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
+                        </div>
+                        <div className="col">
+                            <OfficeCard propEventMonth={'December'} propEventDay={'15'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
+                        </div>
+                        <div className="col">
+                            <OfficeCard propEventMonth={'January'} propEventDay={'20'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeCard>
+                        </div>
+                        <div className="col">
+                            <OfficeCard propEventMonth={'February'} propEventDay={'10'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeCard>
+                        </div>
+                        {/* <div className="col">
+                            <OfficeCard propEventMonth={'March'} propEventDay={'09'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
+                        </div> */}
                         {/* <OfficeDocumentCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeDocumentCard> */}
                         {/* <OfficeDocumentCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeDocumentCard> */}
                     </div>
-                    
+
+                    <div className="container row">
+                        <div className="col-sm col-md">
+                            <OfficeCard propEventMonth={'February'} propEventDay={'10'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeCard>
+                        </div>
+                        <div className="col-sm col-md">
+                            <OfficeCard propEventMonth={'March'} propEventDay={'09'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
+                        </div>
+                        <div className="col-sm col-md">
+                            <OfficeCard propEventMonth={'January'} propEventDay={'20'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeCard>
+                        </div>
+                    </div>
                 </PivotItem>
                 <PivotItem headerText="INVOICE & SIT">
                     <PrimeDataTable propShowFilter={false} propClientDetails={this.state.clientInvoiceDetails}></PrimeDataTable>

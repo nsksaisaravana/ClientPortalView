@@ -115,10 +115,10 @@ export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, 
           <Card onClick={this.alertClicked} tokens={cardTokens}>
           <Card.Section fill verticalAlign="end" styles={backgroundImageCardSectionStyles} tokens={backgroundImageCardSectionTokens}>
             <Text variant="large" styles={dateTextStyles}>
-              NOVEMBER
+              {this.props.propEventMonth}
             </Text>
             <Text variant="superLarge" styles={dateTextStyles}>
-              26
+            {this.props.propEventDay}
             </Text>
           </Card.Section>
           <Card.Section>

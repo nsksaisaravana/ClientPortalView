@@ -5,3 +5,5 @@ export * from './OfficeCard';
 export * from './OfficeDocumentCardCompact';
 export * from './PrimeDataTable';
 export * from './OfficeCard';
+export * from './OfficeCardHorizontal';
+export * from './PrimeCard';
