@@ -129,7 +129,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                         {/* <OfficeDocumentCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeDocumentCard> */}
                     </div>
 
-                    <div className="container row">
+                    {/* <div className="row">
                         <div className="col-sm col-md">
                             <OfficeCard propEventMonth={'February'} propEventDay={'10'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeCard>
                         </div>
@@ -139,7 +139,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                         <div className="col-sm col-md">
                             <OfficeCard propEventMonth={'January'} propEventDay={'20'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeCard>
                         </div>
-                    </div>
+                    </div> */}
                 </PivotItem>
                 <PivotItem headerText="INVOICE & SIT">
                     <PrimeDataTable propShowFilter={false} propClientDetails={this.state.clientInvoiceDetails}></PrimeDataTable>

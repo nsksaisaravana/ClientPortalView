@@ -38,7 +38,7 @@ export default class ClientPortalWebPart extends BaseClientSideWebPart<IClientPo
     //SPComponentLoader.loadCss("https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css");
     SPComponentLoader.loadCss("https://use.fontawesome.com/releases/v5.8.2/css/all.css");
     SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css");
-    SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css");
+    // SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css");
     jQuery("#workbenchPageContent").prop("style", "max-width: none");
     jQuery(".SPCanvas-canvas").prop("style", "max-width: none");
     jQuery(".CanvasZone").prop("style", "max-width: none");
