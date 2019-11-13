@@ -112,7 +112,8 @@ export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, 
 
 
         return (
-          <Card onClick={this.alertClicked} tokens={cardTokens}>
+          <div >
+          <Card onClick={this.alertClicked} tokens={cardTokens}  style={{display:'block',marginLeft:'auto',marginRight:'auto' }}>
           <Card.Section fill verticalAlign="end" styles={backgroundImageCardSectionStyles} tokens={backgroundImageCardSectionTokens}>
             <Text variant="large" styles={dateTextStyles}>
               {this.props.propEventMonth}
@@ -152,7 +153,7 @@ export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, 
             <Icon iconName="MoreVertical" styles={iconStyles} />
           </Card.Section>
         </Card>
-
+        </div>
         );
       }
 

@@ -4,6 +4,7 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard} from '../index';
 import {IOfficePivotStateValues} from './index';
+import styles from './OfficePivot.module.scss';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
     root: { marginTop: 10 }
@@ -42,7 +43,27 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                 <BootstrapCarousel></BootstrapCarousel>
                             </div>
                             <div className="col-sm">
-                                <BootstrapCarousel></BootstrapCarousel>
+                                {/* <BootstrapCarousel></BootstrapCarousel> */}
+                                <div className="row">
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                </div>
+                                <div className="row mt-2">
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                </div>
                             </div>
                             {/* <div className="col-sm col-md">
                                 
@@ -58,14 +79,14 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                 </div>
                             </div> */}
                         </div>
-                        <div className="row">
-                            <div className="col-sm col-md">
+                        <div className="row mt-5">
+                            <div className="col-sm col-md justify-content-center">
                                 <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></PrimeCard>
                             </div>
-                            <div className="col-sm col-md">
+                            <div className="col-sm col-md justify-content-around">
                                 <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></PrimeCard>
                             </div>
-                            <div className="col-sm col-md">
+                            <div className="col-sm col-md justify-content-around">
                                 <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></PrimeCard>
                             </div>
                         </div>
