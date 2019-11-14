@@ -5,6 +5,7 @@ import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard} from '../index';
 import {IOfficePivotStateValues} from './index';
 import styles from './OfficePivot.module.scss';
+import parse from 'html-react-parser';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
     root: { marginTop: 10 }
@@ -31,20 +32,22 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
         return (
             <Pivot>
                 <PivotItem
-                headerText="PIC & NEWS"
+                headerText="Gellibrand PIC & NEWS"
                 headerButtonProps={{
                     'data-order': 1,
-                    'data-title': 'PIC & NEWS'
+                    'data-title': 'Gellibrand PIC & NEWS'
                 }}
                 >
                    <div >
                         <div className="row">
                             <div className="col-sm">
+                                {/* parse{`<BootstrapCarousel></BootstrapCarousel>`} */}
                                 <BootstrapCarousel></BootstrapCarousel>
                             </div>
                             <div className="col-sm">
                                 {/* <BootstrapCarousel></BootstrapCarousel> */}
                                 <div className="row">
+                                    
                                     <div className="col">
                                         <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
                                         <div className={styles.centered}><p className="text-light">Image Title</p></div>
@@ -80,6 +83,9 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                             </div> */}
                         </div>
                         <div className="row mt-5">
+                            <h3>Latest News from our Gellibrand</h3>
+                        </div>
+                        <div className="row mt-1">
                             <div className="col-sm col-md justify-content-center">
                                 <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></PrimeCard>
                             </div>
@@ -104,9 +110,95 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                         <OfficeDocumentCardCompact></OfficeDocumentCardCompact>
                     </div> */}
                 </PivotItem>
-                {/* <PivotItem headerText="VIDEOS">
-                    <Label styles={labelStyles}>Pivot #2</Label>
-                </PivotItem> */}
+                <PivotItem headerText="House PIC & NEWS">
+                    <div>
+                        <div className="row">
+                            <div className="col-sm">
+                                <BootstrapCarousel></BootstrapCarousel>
+                            </div>
+                            <div className="col-sm">
+                                {/* <BootstrapCarousel></BootstrapCarousel> */}
+                                <div className="row">
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                </div>
+                                <div className="row mt-2">
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row mt-5">
+                            <h3>Latest News from our House</h3>
+                        </div>
+                        <div className="row mt-1">
+                            <div className="col-sm col-md justify-content-center">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></PrimeCard>
+                            </div>
+                            <div className="col-sm col-md justify-content-around">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></PrimeCard>
+                            </div>
+                            <div className="col-sm col-md justify-content-around">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></PrimeCard>
+                            </div>
+                        </div>
+                    </div>
+                </PivotItem>
+                <PivotItem headerText="My PICTURES">
+                    <div>
+                        <div className="row">
+                            <div className="col-sm">
+                                <BootstrapCarousel></BootstrapCarousel>
+                            </div>
+                            <div className="col-sm">
+                                {/* <BootstrapCarousel></BootstrapCarousel> */}
+                                <div className="row">
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                </div>
+                                <div className="row mt-2">
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                    <div className="col">
+                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}  style={{width:"100%"}}/>
+                                        <div className={styles.centered}><p className="text-light">Image Title</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row mt-5">
+                            <div className="col-sm col-md justify-content-center">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></PrimeCard>
+                            </div>
+                            <div className="col-sm col-md justify-content-around">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></PrimeCard>
+                            </div>
+                            <div className="col-sm col-md justify-content-around">
+                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></PrimeCard>
+                            </div>
+                        </div>
+                    </div>
+                </PivotItem>
                 {/* <PivotItem headerText="NEWS">
                     <div className="row">
                         <div className="col-sm">
