@@ -61,21 +61,21 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
             </Card.Item>
             <Card.Section>
               <Text variant="small" styles={siteTextStyles}>
-                Contoso
+                Credit Card Policy
               </Text>
-              <Text styles={descriptionTextStyles}>Contoso Denver expansion design marketing hero guidelines</Text>
-              <Text variant="small" styles={helpfulTextStyles}>
+              <Text styles={descriptionTextStyles}>Sun, Dec 8, 2:00 PM</Text>
+              {/* <Text variant="small" styles={helpfulTextStyles}>
                 Is this recommendation helpful?
-              </Text>
+              </Text> */}
             </Card.Section>
-            <Card.Section styles={footerCardSectionStyles} tokens={footerCardSectionTokens}>
+            {/* <Card.Section styles={footerCardSectionStyles} tokens={footerCardSectionTokens}>
               <Icon iconName="RedEye" styles={iconStyles} />
               <Icon iconName="SingleBookmark" styles={iconStyles} />
               <Stack.Item grow={1}>
                 <span />
               </Stack.Item>
               <Icon iconName="MoreVertical" styles={iconStyles} />
-            </Card.Section>
+            </Card.Section> */}
           </Card>
         </Stack>
       );
