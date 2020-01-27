@@ -40,6 +40,10 @@ export class DataServiceBaseFile{
       return "https://gellibrandss.sharepoint.com/sites/Intranet/ManageDocuments";
   }
 
+  public static returnGellibrandUrl(){
+    return "https://gellibrandss.sharepoint.com/sites/Intranet/News/GellibrandNews";
+  }
+
   public static returnSiteServerRelativeUrl (){
       //return this.spContext.pageContext.site.serverRelativeUrl;
       return "/sites/Intranet/ManageDocuments";

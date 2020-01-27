@@ -3,7 +3,7 @@ import styles from './ClientPortal.module.scss';
 import { IClientPortalProps,IClientPortalState } from './index';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Spinner,OfficePivot} from '../index';
-import {ComponentServicesSearchFiles} from '../../../../componentServices/index';
+import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews} from '../../../../componentServices/index';
 import { DataServiceBaseFile } from '../../../../dataServicesServices';
 export default class ClientPortal extends React.Component<IClientPortalProps, IClientPortalState> {
 
@@ -38,6 +38,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     this.setState({
       isPageLoading:false
     });
+    this.getGellibrandNews();
     ComponentServicesSearchFiles.getClientFiles().then((files)=>{
       console.log("Search completed");
       
@@ -53,6 +54,11 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
       }
       this.setState({myFiles:files,myFilesCarousel:carouselFiles,myAdvanceCard:advanceCard});
     });
+  }
+
+
+  public  getGellibrandNews(){
+    ComponentServicesGellibrandNews.getGellibrandNews();
   }
 
   ///////////////////

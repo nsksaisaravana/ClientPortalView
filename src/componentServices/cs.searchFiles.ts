@@ -21,6 +21,7 @@ export class ComponentServicesSearchFiles{
         
         let clientDetails= await DataServicesClientNames.getClientNameByEmailId(connectionDetails.endPoint,
             DataServiceBaseFile.returnLoginEmailId());
+        console.log("ClientDetails",clientDetails);
         let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}"  `;
         let searchDetails=await DataServicesSearchResults.getSearchResults(connectionDetails.endPoint,kqlQuery,
             teamDetails.SearchSourceId,500,0,DataServiceBaseFile.spHttpClient,
