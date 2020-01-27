@@ -1,3 +1,4 @@
+import { DepartmentConfiguration } from "../config";
 
 
 export class InitialSetUpDetails{
@@ -5,6 +6,7 @@ export class InitialSetUpDetails{
     private static selectedTeam;
 
     public static returnTeam(){
-        return this.selectedTeam;
+        let teamDetails= DepartmentConfiguration.returnDigitalLibraryDetails();
+        return teamDetails[0];
     }
 }

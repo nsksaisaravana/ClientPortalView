@@ -47,7 +47,8 @@ export default class ClientPortalWebPart extends BaseClientSideWebPart<IClientPo
     const element: React.ReactElement<IClientPortalProps > = React.createElement(
       ClientPortal,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        context:this.context
       }
     );
 

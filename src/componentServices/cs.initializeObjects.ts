@@ -394,27 +394,27 @@ export class ComponentContextInitializeObjects{
 
     }*/
 
-    public static returnNextSetOfStatusByCurrentStatus(currentStatus){
-        switch(currentStatus){
-            case "Draft":
-                return DepartmentConfiguration.returnDraftNextStatus();
-            case "Completed":
-                return DepartmentConfiguration.returnCompletedNextStatus();
-            case "Authorized":
-                return DepartmentConfiguration.returnAuthorisedNextStatus();
-            case "Reviewed":
-                return DepartmentConfiguration.returnReviewedNextStatus();
-            case "Issued":
-                return DepartmentConfiguration.returnIssuedNextStatus();
-            case "UnApproved":
-                return DepartmentConfiguration.returnUnApprovedNextStatus();
-            case "Revised":
-                return DepartmentConfiguration.returnReviseNextStatus();
-            case "Withdrawn/Obsolete":
-                return DepartmentConfiguration.returnWithDrawNextStatus();
-            default:
-                return DepartmentConfiguration.returnNewDocStatus();
-        }
-    }
+    // public static returnNextSetOfStatusByCurrentStatus(currentStatus){
+    //     switch(currentStatus){
+    //         case "Draft":
+    //             return DepartmentConfiguration.returnDraftNextStatus();
+    //         case "Completed":
+    //             return DepartmentConfiguration.returnCompletedNextStatus();
+    //         case "Authorized":
+    //             return DepartmentConfiguration.returnAuthorisedNextStatus();
+    //         case "Reviewed":
+    //             return DepartmentConfiguration.returnReviewedNextStatus();
+    //         case "Issued":
+    //             return DepartmentConfiguration.returnIssuedNextStatus();
+    //         case "UnApproved":
+    //             return DepartmentConfiguration.returnUnApprovedNextStatus();
+    //         case "Revised":
+    //             return DepartmentConfiguration.returnReviseNextStatus();
+    //         case "Withdrawn/Obsolete":
+    //             return DepartmentConfiguration.returnWithDrawNextStatus();
+    //         default:
+    //             return DepartmentConfiguration.returnNewDocStatus();
+    //     }
+    // }
 
 }

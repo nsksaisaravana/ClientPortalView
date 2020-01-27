@@ -5,8 +5,11 @@ export class DataServicesClientNames{
     public static getClientNameByEmailId(recordPoint,emailId){
         let web = new Web(recordPoint);
         return web.lists.getByTitle("ClientNameLoginMapping").items
-            .filter(`ClientEmail eq ${emailId}`).get()
+            .select("Title","ClientName/Title","ClientName/Id")
+            .expand("ClientName")
+            .filter(`Title eq '${emailId}'`).get()
             .then((items)=>{
+                console.log(items);
                 return items;
             });
     }

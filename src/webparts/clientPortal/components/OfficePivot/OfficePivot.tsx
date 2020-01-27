@@ -2,16 +2,17 @@ import * as React from 'react';
 import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard} from '../index';
-import {IOfficePivotStateValues} from './index';
+import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard,DynamicCarousel} from '../index';
+import {IOfficePivotStateValues,IOfficePivotPropValues} from './index';
 import styles from './OfficePivot.module.scss';
 import parse from 'html-react-parser';
+import ResizeImage from 'react-resize-image';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
     root: { marginTop: 10 }
   };
   
-  export  class OfficePivot extends React.Component<{}, IOfficePivotStateValues> {
+  export  class OfficePivot extends React.Component<IOfficePivotPropValues, IOfficePivotStateValues> {
 
     constructor(props) {
         super(props);
@@ -160,42 +161,59 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                     <div>
                         <div className="row">
                             <div className="col-sm">
-                                <BootstrapCarousel></BootstrapCarousel>
+                                {/* <BootstrapCarousel></BootstrapCarousel> */}
+                                <DynamicCarousel propImageItems={this.props.propMyFileCarousel}></DynamicCarousel>
                             </div>
                             <div className="col-sm">
                                 {/* <BootstrapCarousel></BootstrapCarousel> */}
                                 <div className="row">
                                     <div className="col">
-                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        {/* <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/> */}
+                                        <img src={this.props.myFiles[3]}  style={{width:411,height:181}}/>
+                                        {/* <ResizeImage
+                                                src={this.props.myFiles[3]}
+                                                alt="Tsunami bt hokusai"
+                                                options={{ width: 411.250,height:181.891 }}
+                                            /> */}
                                         <div className={styles.centered}><p className="text-light">Image Title</p></div>
                                     </div>
                                     <div className="col">
-                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}  style={{width:"100%"}}/>
+                                        {/* <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}  style={{width:"100%"}}/> */}
+                                        {/* <img src={this.props.myFiles[4]}  style={{height:"181.891",width:"411.250"}}/> */}
+                                        <img src={this.props.myFiles[4]}   style={{width:411,height:181}}/>
                                         <div className={styles.centered}><p className="text-light">Image Title</p></div>
                                     </div>
                                 </div>
                                 <div className="row mt-2">
                                     <div className="col">
-                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/>
+                                        {/* <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}  style={{width:"100%"}}/> */}
+                                        {/* <img src={this.props.myFiles[5]}  style={{height:"181.891",width:"411.250"}}/> */}
+                                        <img src={this.props.myFiles[5]}   style={{width:411,height:181}}/>
                                         <div className={styles.centered}><p className="text-light">Image Title</p></div>
                                     </div>
                                     <div className="col">
-                                        <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}  style={{width:"100%"}}/>
+                                        {/* <img src={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}  style={{width:"100%"}}/> */}
+                                        <img src={this.props.myFiles[6]}   style={{width:411,height:181}}/>
                                         <div className={styles.centered}><p className="text-light">Image Title</p></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="row mt-5">
-                            <div className="col-sm col-md justify-content-center">
-                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></PrimeCard>
+                            {this.props.propMyAdvanceCard.map(item=>(
+                                <div className="col-sm col-md justify-content-center">
+                                <PrimeCard propImagePath={item}></PrimeCard>
+                            </div>
+                            ))}
+                            {/* <div className="col-sm col-md justify-content-center">
+                                <PrimeCard propImagePath={this.props.myFiles[7]}></PrimeCard>
                             </div>
                             <div className="col-sm col-md justify-content-around">
-                                <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></PrimeCard>
+                                <PrimeCard propImagePath={this.props.myFiles[8]}></PrimeCard>
                             </div>
                             <div className="col-sm col-md justify-content-around">
                                 <PrimeCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></PrimeCard>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </PivotItem>
@@ -263,5 +281,9 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
             </Pivot>
         );
     }
+
+
+
+
   }
   
