@@ -10,4 +10,7 @@ export interface IClientPortalState{
   myFiles:any;
   myFilesCarousel:any;
   myAdvanceCard:any;
+  singleImageBannerForGellibrandNews:any;
+  fourImageBannerForGellibrandNews:any;
+  advancedCardForGellibrandNews:any;
 }

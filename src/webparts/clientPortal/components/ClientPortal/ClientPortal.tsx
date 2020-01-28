@@ -12,9 +12,12 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     this.state={
       showSpinner:false,
       isPageLoading:true,
-      myFiles:[],
+      myFiles:null,
       myFilesCarousel:[],
-      myAdvanceCard:[]
+      myAdvanceCard:[],
+      singleImageBannerForGellibrandNews:[],
+      fourImageBannerForGellibrandNews:null,
+      advancedCardForGellibrandNews:[]
     };
     DataServiceBaseFile.pageLoad(this.props.context);
   }
@@ -24,7 +27,12 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
       return (
         <div >
           <Spinner propShowSpinner={this.state.showSpinner}></Spinner>
-          <OfficePivot myFiles={this.state.myFiles} propMyFileCarousel={this.state.myFilesCarousel} propMyAdvanceCard={this.state.myAdvanceCard}></OfficePivot>
+          <OfficePivot myFiles={this.state.myFiles} propMyFileCarousel={this.state.myFilesCarousel} 
+            propMyAdvanceCard={this.state.myAdvanceCard}
+            propSingleImageBannerForGellibrandNews={this.state.singleImageBannerForGellibrandNews}
+            propFourImageBannerForGellibrandNews={this.state.fourImageBannerForGellibrandNews}
+            propAdvancedCardForGellibrandNews={this.state.advancedCardForGellibrandNews}
+            ></OfficePivot>
         </div>
       );
     }else{
@@ -58,7 +66,13 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
 
   public  getGellibrandNews(){
-    ComponentServicesGellibrandNews.getGellibrandNews();
+    ComponentServicesGellibrandNews.getGellibrandNews().then(()=>{
+      this.setState({
+        singleImageBannerForGellibrandNews:ComponentServicesGellibrandNews.singleImageBanner,
+        fourImageBannerForGellibrandNews:ComponentServicesGellibrandNews.fourImageBanner,
+        advancedCardForGellibrandNews:ComponentServicesGellibrandNews.advancedCard
+      });
+    });
   }
 
   ///////////////////

@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.9.1",
+    "version": "1.10.0",
     "libraryName": "client-portal-view",
     "libraryId": "07d1af16-60d5-4c02-a998-e2d577db5bf3",
     "packageManager": "npm",

@@ -8,6 +8,6 @@ export class DataServicesGellibrandNews{
         return web.lists.getByTitle("Site Pages").items.top(20).orderBy("Created",false)
             .get().then((items)=>{
                 return items;
-            })
+            });
     }
 }

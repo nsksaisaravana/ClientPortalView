@@ -10,12 +10,14 @@ export  class DynamicCarousel extends React.Component<ICarouselProps, {}> {
                     <Carousel.Item  >
                         <img
                     className="d-block w-100"
-                    src={item}
+                    src={item.blob}
                     alt="First slide"
                     style={{width:852,height:372}}
                     /> 
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <Carousel.Caption>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    </Carousel.Caption>
                     </Carousel.Item>
                 ))}
             </Carousel>

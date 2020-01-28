@@ -31,10 +31,12 @@ export class ComponentServicesSearchFiles{
     }
 
     public static async fetchItemImageUrl(listEndPoint,searchDetails:any){
-        // let imageItem={
-        //     blob:{},
-        //     fileType:''
-        // }
+        let imageItem={
+            blob:{},
+            fileType:'',
+            title:'',
+            description:''
+        };
         let imageArrays=[];
         for(let item of searchDetails){
             for(let cell of item.Cells){
@@ -43,14 +45,15 @@ export class ComponentServicesSearchFiles{
                     console.log(`${listItem.FileDirRef}/${listItem.FieldValuesAsText.FileLeafRef} ` );
                     let path=`${listItem.FileDirRef}/${listItem.FieldValuesAsText.FileLeafRef} `;
                     let itemBlob=await DataServicesDigitalLibrary.getItemBlob(listEndPoint,path);
-                    // let blobItem=imageItem;
+                    let blobItem={} as any;
                     var file = new Blob([itemBlob], {
                         type:`application/${listItem.File_x0020_Type}`  //'application/pdf'
                       });
                     var fileURL = URL.createObjectURL(file);
-                    // blobItem.blob=itemBlob;
-                    // blobItem.fileType=listItem.File_x0020_Type;
-                    imageArrays.push(fileURL);
+                    blobItem.blob=fileURL;
+                    blobItem.fileType=listItem.File_x0020_Type;
+                    
+                    imageArrays.push(blobItem);
                 }
             }
         }
