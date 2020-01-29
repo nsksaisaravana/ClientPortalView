@@ -2,26 +2,22 @@ import {libraryNames} from '../componentEnums/index';
 import {DataServicesClientNames, DataServiceBaseFile, DataServicesSearchFiles,
      DataServicesSearchResults,DataServicesDigitalLibrary} from '../dataServicesServices/index';
 import {ComponentContextConnectionString,ComponentContextInitialSetUpDetails} from './index';
-export class ComponentServicesSearchFiles{
+
+export class ComponentContextHousePictures{
 
     public static singleImageBanner=[];
     public static fourImageBanner=[];
     public static advancedCard=[];
 
-    public static async getClientFiles(clientDetails){
+    public static async getHousePictures(clientDetails){
 
         let teamDetails=ComponentContextInitialSetUpDetails.returnTeam();
         let connectionDetails=ComponentContextConnectionString.setLibraryAndEndPoint(teamDetails);
-    
-        // let clientDetails= await DataServicesClientNames.getClientNameByEmailId(connectionDetails.endPoint,
-        //     DataServiceBaseFile.returnLoginEmailId());
-        console.log("ClientDetails",clientDetails);
-        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx") `;
+        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].Site.Title}" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx") `;
         let searchDetails=await DataServicesSearchResults.getSearchResults(connectionDetails.endPoint,kqlQuery,
             teamDetails.SearchSourceId,500,0,DataServiceBaseFile.spHttpClient,
             DataServiceBaseFile.spHttpOptions);
         return this.fetchItemImageUrl(connectionDetails.endPoint,searchDetails.Table.Rows);
-
     }
 
     public static async fetchItemImageUrl(listEndPoint,searchDetails:any){
@@ -31,7 +27,7 @@ export class ComponentServicesSearchFiles{
             title:'',
             description:''
         };
-        let imageArrays=[];
+        let housePictures=[];
         for(let item of searchDetails){
             for(let cell of item.Cells){
                 if(cell.Key=="ListItemId"){
@@ -47,17 +43,17 @@ export class ComponentServicesSearchFiles{
                     blobItem.blob=fileURL;
                     blobItem.fileType=listItem.File_x0020_Type;
                     
-                    imageArrays.push(blobItem);
+                    housePictures.push(blobItem);
                 }
             }
         }
-        console.log(imageArrays);
+        console.log(housePictures);
         //return imageArrays;
 
-        console.log("House Pictures Items",imageArrays);
-        if(imageArrays.length <=5){
+        console.log("House Pictures Items",housePictures);
+        if(housePictures.length <=5){
             let counter=0;
-            for(let images of imageArrays){
+            for(let images of housePictures){
                 if(counter==0){
                     this.singleImageBanner.push(images);
                 }else{
@@ -67,9 +63,9 @@ export class ComponentServicesSearchFiles{
             }
         }
 
-        if(imageArrays.length >5 && imageArrays.length <=8){
+        if(housePictures.length >5 && housePictures.length <=8){
             let counter=0;
-            for(let images of imageArrays){
+            for(let images of housePictures){
                 if(counter==0){
                     this.singleImageBanner.push(images);
                 }else if (counter >0 && counter <=4) {
@@ -81,10 +77,10 @@ export class ComponentServicesSearchFiles{
             }
         }
 
-        if(imageArrays.length >8 ){
+        if(housePictures.length >8 ){
             let counter=0;
-            let singleImageCount=imageArrays.length -8;
-            for(let images of imageArrays){
+            let singleImageCount=housePictures.length -8;
+            for(let images of housePictures){
                 if(counter <=singleImageCount){
                     this.singleImageBanner.push(images);
                 }else if (counter >singleImageCount && counter <= singleImageCount+4) {
@@ -96,9 +92,8 @@ export class ComponentServicesSearchFiles{
             }
         }
 
-        console.log("Sinlge Image banner My Pictures",this.singleImageBanner);
-        console.log("Four Image banner My Pictures",this.fourImageBanner);
-        console.log("Advance Image My Pictures",this.advancedCard);
+        console.log("Sinlge Image banner House",this.singleImageBanner);
+        console.log("Four Image banner house",this.fourImageBanner);
+        console.log("Advance Image house",this.advancedCard);
     }
-
 }

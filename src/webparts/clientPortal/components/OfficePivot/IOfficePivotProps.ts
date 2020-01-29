@@ -5,12 +5,20 @@ export interface IOfficePivotStateValues{
 
 
 export interface IOfficePivotPropValues{
-    myFiles:any;
-    propMyFileCarousel:any;
-    propMyAdvanceCard:any;
+  
 
     //prop for gellibrandNews
     propSingleImageBannerForGellibrandNews:any;
     propFourImageBannerForGellibrandNews:any;
     propAdvancedCardForGellibrandNews:any;
+
+    //prop for housenews
+    propSingleImageBannerForHouseNews:any;
+    propFourImageBannerForHouseNews:any;
+    propAdvancedCardForHouseNews:any;
+
+    //prop for My Pictures
+    propSingleImageBannerForMyPictures:any;
+    propFourImageBannerForMyPictures:any;
+    propAdvancedCardForMyPictures:any;
 }

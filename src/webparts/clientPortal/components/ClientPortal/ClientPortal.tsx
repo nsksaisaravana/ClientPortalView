@@ -3,7 +3,7 @@ import styles from './ClientPortal.module.scss';
 import { IClientPortalProps,IClientPortalState } from './index';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Spinner,OfficePivot} from '../index';
-import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews} from '../../../../componentServices/index';
+import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews, ComponentContextInitialSetUpDetails, ComponentContextHousePictures} from '../../../../componentServices/index';
 import { DataServiceBaseFile } from '../../../../dataServicesServices';
 export default class ClientPortal extends React.Component<IClientPortalProps, IClientPortalState> {
 
@@ -17,7 +17,14 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
       myAdvanceCard:[],
       singleImageBannerForGellibrandNews:[],
       fourImageBannerForGellibrandNews:null,
-      advancedCardForGellibrandNews:[]
+      advancedCardForGellibrandNews:[],
+      singleImageBannerForHouseNews:[],
+      fourImageBannerForHouseNews:null,
+      advancedCardForHouseNews:[],
+
+      singleImageBannerForMyPictures:[],
+      fourImageBannerForMyPictures:null,
+      advancedCardForMyPicutures:[]
     };
     DataServiceBaseFile.pageLoad(this.props.context);
   }
@@ -27,11 +34,17 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
       return (
         <div >
           <Spinner propShowSpinner={this.state.showSpinner}></Spinner>
-          <OfficePivot myFiles={this.state.myFiles} propMyFileCarousel={this.state.myFilesCarousel} 
-            propMyAdvanceCard={this.state.myAdvanceCard}
+          <OfficePivot 
+           
             propSingleImageBannerForGellibrandNews={this.state.singleImageBannerForGellibrandNews}
             propFourImageBannerForGellibrandNews={this.state.fourImageBannerForGellibrandNews}
             propAdvancedCardForGellibrandNews={this.state.advancedCardForGellibrandNews}
+            propSingleImageBannerForHouseNews={this.state.singleImageBannerForHouseNews}
+            propFourImageBannerForHouseNews={this.state.fourImageBannerForHouseNews}
+            propAdvancedCardForHouseNews={this.state.advancedCardForHouseNews}
+            propSingleImageBannerForMyPictures={this.state.singleImageBannerForMyPictures}
+            propFourImageBannerForMyPictures={this.state.fourImageBannerForMyPictures}
+            propAdvancedCardForMyPictures={this.state.advancedCardForMyPicutures}
             ></OfficePivot>
         </div>
       );
@@ -43,30 +56,38 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
 
   public componentDidMount(){
+   
+    this.pageLoad();
+    
+    
+  }
+
+  public async pageLoad(){
+    let clientDetails=await ComponentContextInitialSetUpDetails.getClientNameByEmailId();
+    await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),this.getHouseNews(clientDetails)]);
     this.setState({
       isPageLoading:false
     });
-    this.getGellibrandNews();
-    ComponentServicesSearchFiles.getClientFiles().then((files)=>{
-      console.log("Search completed");
-      
-      let carouselFiles=[],counter=0,advanceCard=[];
-      for(let file of files){
-        if(counter <2 ){
-          carouselFiles.push(file);
-        }
-        if(counter ==7 || counter ==8 ){
-          advanceCard.push(file);
-        }
-        counter++;
-      }
-      this.setState({myFiles:files,myFilesCarousel:carouselFiles,myAdvanceCard:advanceCard});
+    // this.getGellibrandNews();
+    // this.getClientFiles(clientDetails);
+    // this.getHouseNews(clientDetails);
+  }
+
+  public getClientFiles(clientDetails){
+   
+
+    return ComponentServicesSearchFiles.getClientFiles(clientDetails).then(()=>{
+      this.setState({
+        singleImageBannerForMyPictures:ComponentServicesSearchFiles.singleImageBanner,
+        fourImageBannerForMyPictures:ComponentServicesSearchFiles.fourImageBanner,
+        advancedCardForMyPicutures:ComponentServicesSearchFiles.advancedCard
+      });
     });
   }
 
 
   public  getGellibrandNews(){
-    ComponentServicesGellibrandNews.getGellibrandNews().then(()=>{
+    return ComponentServicesGellibrandNews.getGellibrandNews().then(()=>{
       this.setState({
         singleImageBannerForGellibrandNews:ComponentServicesGellibrandNews.singleImageBanner,
         fourImageBannerForGellibrandNews:ComponentServicesGellibrandNews.fourImageBanner,
@@ -74,6 +95,18 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
       });
     });
   }
+
+  public  getHouseNews(clientDetails){
+    return ComponentContextHousePictures.getHousePictures(clientDetails).then(()=>{
+      this.setState({
+        singleImageBannerForHouseNews:ComponentContextHousePictures.singleImageBanner,
+        fourImageBannerForHouseNews:ComponentContextHousePictures.fourImageBanner,
+        advancedCardForHouseNews:ComponentContextHousePictures.advancedCard
+      });
+    });
+  }
+
+  
 
   ///////////////////
 }

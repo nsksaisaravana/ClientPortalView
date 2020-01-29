@@ -13,4 +13,12 @@ export interface IClientPortalState{
   singleImageBannerForGellibrandNews:any;
   fourImageBannerForGellibrandNews:any;
   advancedCardForGellibrandNews:any;
+
+  singleImageBannerForHouseNews:any;
+  fourImageBannerForHouseNews:any;
+  advancedCardForHouseNews:any;
+
+  singleImageBannerForMyPictures:any;
+  fourImageBannerForMyPictures:any;
+  advancedCardForMyPicutures:any;
 }

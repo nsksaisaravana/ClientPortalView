@@ -33,7 +33,7 @@ export default class ClientPortalWebPart extends BaseClientSideWebPart<IClientPo
   }
 
   public render(): void {
-
+    SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/antd/3.23.6/antd.css");
     SPComponentLoader.loadCss("https://cdn.jsdelivr.net/npm/primereact@3.1.9/resources/primereact.min.css");
     SPComponentLoader.loadCss("https://cdn.jsdelivr.net/npm/primereact@3.1.9/resources/themes/nova-light/theme.css");
     SPComponentLoader.loadCss("https://unpkg.com/primeicons/primeicons.css");
