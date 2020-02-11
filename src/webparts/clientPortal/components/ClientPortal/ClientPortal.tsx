@@ -3,7 +3,9 @@ import styles from './ClientPortal.module.scss';
 import { IClientPortalProps,IClientPortalState } from './index';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Spinner,OfficePivot} from '../index';
-import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews, ComponentContextInitialSetUpDetails, ComponentContextHousePictures} from '../../../../componentServices/index';
+import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews, ComponentContextInitialSetUpDetails, 
+  ComponentContextHousePictures,ComponentContextClientDocuments,
+  ComponentServicesEventDetails} from '../../../../componentServices/index';
 import { DataServiceBaseFile } from '../../../../dataServicesServices';
 export default class ClientPortal extends React.Component<IClientPortalProps, IClientPortalState> {
 
@@ -24,7 +26,9 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
       singleImageBannerForMyPictures:[],
       fourImageBannerForMyPictures:null,
-      advancedCardForMyPicutures:[]
+      advancedCardForMyPicutures:[],
+      clientDocuments:[],
+      clientEventDetails:[]
     };
     DataServiceBaseFile.pageLoad(this.props.context);
   }
@@ -45,6 +49,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
             propSingleImageBannerForMyPictures={this.state.singleImageBannerForMyPictures}
             propFourImageBannerForMyPictures={this.state.fourImageBannerForMyPictures}
             propAdvancedCardForMyPictures={this.state.advancedCardForMyPicutures}
+            propClientDocuments={this.state.clientDocuments}
             ></OfficePivot>
         </div>
       );
@@ -64,7 +69,9 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
   public async pageLoad(){
     let clientDetails=await ComponentContextInitialSetUpDetails.getClientNameByEmailId();
-    await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),this.getHouseNews(clientDetails)]);
+    await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
+      this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails),
+      this.getEventDetails(clientDetails)]);
     this.setState({
       isPageLoading:false
     });
@@ -104,6 +111,22 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
         advancedCardForHouseNews:ComponentContextHousePictures.advancedCard
       });
     });
+  }
+
+  public async getClientDocuments(clientDetails){
+    let clientDocs= await ComponentContextClientDocuments.getClientDocuments(clientDetails);
+    this.setState({
+      clientDocuments:clientDocs
+    });
+  }
+
+  public async getEventDetails(clientDetails){
+    let eventDetails=await ComponentServicesEventDetails.fetchEventDetails(clientDetails);
+    console.log("EventDetails",eventDetails);
+    this.setState({
+      clientEventDetails:eventDetails
+    });
+
   }
 
   

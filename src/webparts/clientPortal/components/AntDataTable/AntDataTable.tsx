@@ -14,6 +14,8 @@ import Menu  from 'antd/es/menu';
 import Dropdown  from 'antd/es/dropdown';
 import Icon  from 'antd/es/icon';
 import 'moment';
+import { DataServicesDigitalLibrary } from '../../../../dataServicesServices';
+import { ComponentContextInitialSetUpDetails, ComponentContextConnectionString,ComponentContextGridEvents } from '../../../../componentServices';
 const dateFormat = 'DD/MM/YYYY';
 
 export  class MyDocsAntDataTable extends React.Component<IAntDataTablePropsValues, IAntDataTableStateValues> {
@@ -39,14 +41,21 @@ export  class MyDocsAntDataTable extends React.Component<IAntDataTablePropsValue
         title: 'Action',
         dataIndex: 'markascompleted',
         render: (text, record) =>
+        <div onClick={()=>this.download(record) }><a>Download</a></div>
         //<a>Delete {this.handleMarkAsCompleted(record.key)}</a>
-          this.props.propMyDocsDetails.length >= 1 ? (
-            <Popconfirm title="Sure to Mark as completed?" onConfirm={() => this.handleMarkAsCompleted(record)}>
-              <a>Download</a>
-            </Popconfirm>
-            // <div onClick={()=>this.handleMarkAsCompleted(record) }><a>Mark as completed</a></div>
-          ) : null,
+          // this.props.propMyDocsDetails.length >= 1 ? (
+          //   <Popconfirm title="Sure to Mark as completed?" onConfirm={() => this.handleMarkAsCompleted(record)}>
+          //     <a>Download</a>
+          //   </Popconfirm>
+          //   // <div onClick={()=>this.handleMarkAsCompleted(record) }><a>Mark as completed</a></div>
+          // ) : null,
       }
+      // {
+      //   title: '',
+      //   dataIndex: 'view',
+      //   render: (text, record) =>
+      //   <div onClick={()=>this.viewFile(record) }><a>View</a></div>
+      // }
     ];
 
 
@@ -64,14 +73,13 @@ export  class MyDocsAntDataTable extends React.Component<IAntDataTablePropsValue
       );
     }
 
-    private handleMarkAsCompleted(record){
+    private async download(record:any){
       console.log(record);
-      // ComponentServicesTrainigDetail.getTrainingDetailsByUserIdAndStatusAndTrainingId(record.Id).then((header)=>{
-      //   ComponentServicesTrainigDetail.markTrainingAsCompleted(header[0].Id).then(()=>{
-      //     this.props.propMarkStatusCompleted();
-      //   });
-      // });
-     
+      ComponentContextGridEvents.downloadFile(record);
+    }
+
+    private async viewFile(record:any){
+      ComponentContextGridEvents.viewFile(record);
     }
 
     // private handleExpand = (expanded, record) => {

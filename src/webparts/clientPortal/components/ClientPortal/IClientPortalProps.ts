@@ -21,4 +21,8 @@ export interface IClientPortalState{
   singleImageBannerForMyPictures:any;
   fourImageBannerForMyPictures:any;
   advancedCardForMyPicutures:any;
+
+  clientDocuments:any;
+
+  clientEventDetails:any;
 }

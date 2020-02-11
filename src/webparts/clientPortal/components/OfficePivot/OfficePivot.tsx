@@ -235,7 +235,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 </PivotItem>
                 <PivotItem headerText="Client Documents">
                     {/* <PrimeDataTable propShowFilter={false} propClientDetails={this.state.clientInvoiceDetails}></PrimeDataTable> */}
-                    <MyDocsAntDataTable propDownloadClick={[]} propMyDocsDetails={this.state.clientInvoiceDetails}></MyDocsAntDataTable>
+                    <MyDocsAntDataTable propDownloadClick={[]} propMyDocsDetails={this.props.propClientDocuments}></MyDocsAntDataTable>
                 </PivotItem>
                 {/* <PivotItem headerText="ITEMS FOR REVIEW">
                     <Label styles={labelStyles}>Pivot #3</Label>

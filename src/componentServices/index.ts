@@ -4,3 +4,6 @@ export * from './cs.initializeObjects';
 export * from './cs.initialSetUp';
 export * from './cs.gellibrandNews';
 export * from './cs.housePictures';
+export * from './cs.clientDocuments';
+export * from './cs.gridEvents';
+export * from './cs.eventDetails';

@@ -21,4 +21,7 @@ export interface IOfficePivotPropValues{
     propSingleImageBannerForMyPictures:any;
     propFourImageBannerForMyPictures:any;
     propAdvancedCardForMyPictures:any;
+
+    //client docs
+    propClientDocuments:any;
 }
