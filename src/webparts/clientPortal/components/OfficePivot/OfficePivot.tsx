@@ -202,36 +202,21 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 </PivotItem> */}
                 <PivotItem headerText="EVENTS">
                     <div className="row">
-                        <div className="col">
-                            <OfficeCard propEventMonth={'November'} propEventDay={'25'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
-                        </div>
-                        <div className="col">
-                            <OfficeCard propEventMonth={'December'} propEventDay={'15'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
-                        </div>
-                        <div className="col">
-                            <OfficeCard propEventMonth={'January'} propEventDay={'20'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeCard>
-                        </div>
-                        <div className="col">
-                            <OfficeCard propEventMonth={'February'} propEventDay={'10'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeCard>
-                        </div>
-                        {/* <div className="col">
-                            <OfficeCard propEventMonth={'March'} propEventDay={'09'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
-                        </div> */}
-                        {/* <OfficeDocumentCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeDocumentCard> */}
-                        {/* <OfficeDocumentCard propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeDocumentCard> */}
+                        {this.props.propEventDetails.map(item=>(
+                            <div className="col-sm col-md justify-content-center">
+                                {/* <PrimeCard propImagePath={item.blob}></PrimeCard> */}
+                                <OfficeCard propEventMonth={item.eventMonth} propEventDay={item.eventDate} 
+                                    propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}
+                                    propEventTitle={item.EventTitle}
+                                    propEventDesc={item.EventDesc}
+                                    propFromTime={item.eventFromTime}
+                                    propToTime={item.eventToTime}
+                                    propEventDayName={item.eventDay}
+                                    propEventPlace={item.EventPlace}
+                                    ></OfficeCard>
+                            </div>
+                        ))}
                     </div>
-
-                    {/* <div className="row">
-                        <div className="col-sm col-md">
-                            <OfficeCard propEventMonth={'February'} propEventDay={'10'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"}></OfficeCard>
-                        </div>
-                        <div className="col-sm col-md">
-                            <OfficeCard propEventMonth={'March'} propEventDay={'09'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"}></OfficeCard>
-                        </div>
-                        <div className="col-sm col-md">
-                            <OfficeCard propEventMonth={'January'} propEventDay={'20'} propImagePath={"https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"}></OfficeCard>
-                        </div>
-                    </div> */}
                 </PivotItem>
                 <PivotItem headerText="Client Documents">
                     {/* <PrimeDataTable propShowFilter={false} propClientDetails={this.state.clientInvoiceDetails}></PrimeDataTable> */}

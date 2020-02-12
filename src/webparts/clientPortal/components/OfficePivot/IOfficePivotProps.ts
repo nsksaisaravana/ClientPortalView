@@ -24,4 +24,6 @@ export interface IOfficePivotPropValues{
 
     //client docs
     propClientDocuments:any;
+
+    propEventDetails:any;
 }

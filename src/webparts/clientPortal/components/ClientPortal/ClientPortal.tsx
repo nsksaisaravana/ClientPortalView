@@ -50,6 +50,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
             propFourImageBannerForMyPictures={this.state.fourImageBannerForMyPictures}
             propAdvancedCardForMyPictures={this.state.advancedCardForMyPicutures}
             propClientDocuments={this.state.clientDocuments}
+            propEventDetails={this.state.clientEventDetails}
             ></OfficePivot>
         </div>
       );
@@ -69,9 +70,13 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
   public async pageLoad(){
     let clientDetails=await ComponentContextInitialSetUpDetails.getClientNameByEmailId();
+    // await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
+    //   this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails),
+    //   this.getEventDetails(clientDetails)]);
+    this.getEventDetails(clientDetails)
     await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
-      this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails),
-      this.getEventDetails(clientDetails)]);
+      this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails)
+      ]);
     this.setState({
       isPageLoading:false
     });
@@ -118,6 +123,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     this.setState({
       clientDocuments:clientDocs
     });
+    return clientDocs;
   }
 
   public async getEventDetails(clientDetails){
@@ -126,6 +132,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     this.setState({
       clientEventDetails:eventDetails
     });
+    
 
   }
 

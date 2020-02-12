@@ -15,15 +15,26 @@ export class ComponentServicesEventDetails{
             clientDetails[0].Site.Title,"Gellibrand");
 
         let counter=0;
-        let date='';
-        let month='';
+        let fromDate='';
+        let fromMonth='';
+        let fromTime='';
+        let toTime='';
+        let eventDay=''
         for(let eventItem of eventDetails){
-            date=this.moment(eventItem.EventDate).local().format("DD");
-            month=this.moment(eventItem.EventDate).local().format("MMMM");
-            eventDetails[counter].eventDate=date;
-            eventDetails[counter].eventMonth=month;
+            fromDate=this.moment(eventItem.EventFromDate).local().format("DD");
+            fromMonth=this.moment(eventItem.EventFromDate).local().format("MMMM");
+            fromTime=this.moment(eventItem.EventFromDate).local().format("hh.mm a");
+            toTime=this.moment(eventItem.EventToDate).local().format("hh.mm a");
+            eventDay=this.moment(eventItem.EventFromDate).local().format("dddd");
+            eventDetails[counter].eventDate=fromDate;
+            eventDetails[counter].eventMonth=fromMonth;
+            eventDetails[counter].eventFromTime=fromTime;
+            eventDetails[counter].eventToTime=toTime;
+            eventDetails[counter].eventDay=eventDay;
+            eventDetails[counter].EventDesc=eventDetails[counter].EventDesc ? eventDetails[counter].EventDesc.length > 32 ?eventDetails[counter].EventDesc.substring(0, 32)+'..':eventDetails[counter].EventDesc:'';
             counter ++;
         }
+        //return new Promise((resolve) => { resolve(null); });
         return eventDetails;
     }
 }

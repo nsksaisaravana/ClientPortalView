@@ -22,9 +22,9 @@ export class DataServicesEventDetails{
         currentDateString+="T00:00:00.000Z";
         let web=new Web(endPoint);
         let items=await web.lists.getByTitle("EventDetails").items
-        .filter(`EventDate gt datetime'${currentDateString}'`)
+        .filter(`EventFromDate gt datetime'${currentDateString}'`)
         .top(5000)
-        .orderBy("EventDate",true)
+        .orderBy("EventFromDate",true)
         .get();
         return items;
     }
@@ -36,9 +36,9 @@ export class DataServicesEventDetails{
         currentDateString+="T00:00:00.000Z";
         let web=new Web(endPoint);
         let items=await web.lists.getByTitle("EventDetails").items
-        .filter(`EventDate gt datetime'${currentDateString}' and (Title eq '${clientName}' or Title eq '${houseName}')`)
+        .filter(`EventFromDate gt datetime'${currentDateString}' and (Title eq '${clientName}' or Title eq '${houseName}')`)
         .top(5000)
-        .orderBy("EventDate",true)
+        .orderBy("EventFromDate",true)
         .get();
         return items;
     }

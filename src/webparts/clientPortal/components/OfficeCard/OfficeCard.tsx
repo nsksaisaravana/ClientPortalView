@@ -124,33 +124,34 @@ export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, 
           </Card.Section>
           <Card.Section>
             <Text variant="small" styles={subduedTextStyles}>
-              Category
+            {this.props.propEventTitle}
             </Text>
-            <Text styles={descriptionTextStyles}>Contoso marketing customer visit and survey results</Text>
+            <Text styles={descriptionTextStyles}>{this.props.propEventDesc}</Text>
           </Card.Section>
           <Card.Section tokens={agendaCardSectionTokens}>
             <Text variant="small" styles={descriptionTextStyles}>
-              Tuesday 2:00-4:30 pm
+            {this.props.propEventDayName} {this.props.propFromTime}-{this.props.propToTime} pm
             </Text>
-            <Text variant="small" styles={subduedTextStyles}>
-              Conf Room 34/1301
-            </Text>
+           
           </Card.Section>
           <Card.Item grow={1}>
             <span />
           </Card.Item>
-          <Card.Section horizontal tokens={attendantsCardSectionTokens}>
+          {/* <Card.Section horizontal tokens={attendantsCardSectionTokens}>
             <ActionButton text="12 Attendees" styles={actionButtonStyles} />
             <ActionButton text="4 Accepted" styles={actionButtonStyles} />
             <ActionButton text="3 Declined" styles={actionButtonStyles} />
-          </Card.Section>
+          </Card.Section> */}
           <Card.Section horizontal styles={footerCardSectionStyles} tokens={footerCardSectionTokens}>
-            <Icon iconName="RedEye" styles={iconStyles} />
+            {/* <Icon iconName="RedEye" styles={iconStyles} />
             <Icon iconName="SingleBookmark" styles={iconStyles} />
             <Stack.Item grow={1}>
               <span />
             </Stack.Item>
-            <Icon iconName="MoreVertical" styles={iconStyles} />
+            <Icon iconName="MoreVertical" styles={iconStyles} /> */}
+            <Text variant="small" styles={subduedTextStyles}>
+              {this.props.propEventPlace}
+            </Text>
           </Card.Section>
         </Card>
         </div>
