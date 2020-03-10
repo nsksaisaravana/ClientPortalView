@@ -41,7 +41,8 @@ export class DataServiceBaseFile{
   }
 
   public static returnGellibrandUrl(){
-    return "https://gellibrandss.sharepoint.com/sites/Intranet/News/GellibrandNews";
+    //return "https://gellibrandss.sharepoint.com/sites/Intranet/News/GellibrandNews";  
+    return "https://gellibrandss.sharepoint.com/sites/Intranet/News/CoffeeLounge";
   }
 
   public static returnSiteServerRelativeUrl (){

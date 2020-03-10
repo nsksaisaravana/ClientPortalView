@@ -19,7 +19,7 @@ export class ComponentServicesEventDetails{
         let fromMonth='';
         let fromTime='';
         let toTime='';
-        let eventDay=''
+        let eventDay='';
         for(let eventItem of eventDetails){
             fromDate=this.moment(eventItem.EventFromDate).local().format("DD");
             fromMonth=this.moment(eventItem.EventFromDate).local().format("MMMM");

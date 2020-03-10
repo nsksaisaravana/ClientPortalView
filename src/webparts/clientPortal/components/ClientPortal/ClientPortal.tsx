@@ -73,7 +73,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     // await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
     //   this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails),
     //   this.getEventDetails(clientDetails)]);
-    this.getEventDetails(clientDetails)
+    this.getEventDetails(clientDetails);
     await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
       this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails)
       ]);
