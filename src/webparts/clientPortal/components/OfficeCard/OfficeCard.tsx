@@ -130,7 +130,7 @@ export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, 
           </Card.Section>
           <Card.Section tokens={agendaCardSectionTokens}>
             <Text variant="small" styles={descriptionTextStyles}>
-            {this.props.propEventDayName} {this.props.propFromTime}-{this.props.propToTime} pm
+            {this.props.propEventDayName} {this.props.propFromTime}-{this.props.propToTime} 
             </Text>
            
           </Card.Section>

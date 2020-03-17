@@ -70,7 +70,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                 </div>
                             </div>
                         </div>
-                        <div className="row mt-5">
+                        {/* <div className="row mt-5">
                             <h3>Latest News from our Gellibrand</h3>
                         </div>
                         <div className="row mt-1">
@@ -79,7 +79,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                     <PrimeCard propImagePath={item.blob}></PrimeCard>
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                     {/* <div className="row">
                         <BootstrapCarousel></BootstrapCarousel>
@@ -125,7 +125,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                 </div>
                             </div>
                         </div>
-                        <div className="row mt-5">
+                        {/* <div className="row mt-5">
                             <h3>Latest News from our House</h3>
                         </div>
                         <div className="row mt-1">
@@ -134,7 +134,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                     <PrimeCard propImagePath={item.blob}></PrimeCard>
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                 </PivotItem>
                 <PivotItem headerText="My PICTURES">
@@ -168,14 +168,14 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                 </div>
                             </div>
                         </div>
-                        <div className="row mt-5">
+                        {/* <div className="row mt-5">
                             {this.props.propAdvancedCardForMyPictures.map(item=>(
                                 <div className="col-sm col-md justify-content-center">
                                 <PrimeCard propImagePath={item.blob}></PrimeCard>
                             </div>
                             ))}
                            
-                        </div>
+                        </div> */}
                     </div>
                 </PivotItem>
                 {/* <PivotItem headerText="NEWS">

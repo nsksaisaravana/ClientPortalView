@@ -46,34 +46,47 @@ export class ComponentServicesGellibrandNews{
             }
         }
 
-        if(bannerItems.length >5 && bannerItems.length <=8){
+        if(bannerItems.length >5){
             let counter=0;
             for(let images of bannerItems){
-                if(counter==0){
+                if(counter < bannerItems.length -4){
                     this.singleImageBanner.push(images);
-                }else if (counter >0 && counter <=4) {
-                    this.fourImageBanner.push(images);
                 }else{
-                    this.advancedCard.push(images);
+                    this.fourImageBanner.push(images);
                 }
                 counter ++;
             }
         }
 
-        if(bannerItems.length >8 ){
-            let counter=0;
-            let singleImageCount=bannerItems.length -8;
-            for(let images of bannerItems){
-                if(counter <=singleImageCount){
-                    this.singleImageBanner.push(images);
-                }else if (counter >singleImageCount && counter <= singleImageCount+4) {
-                    this.fourImageBanner.push(images);
-                }else{
-                    this.advancedCard.push(images);
-                }
-                counter ++;
-            }
-        }
+        // if(bannerItems.length >5 && bannerItems.length <=8){
+        //     let counter=0;
+        //     for(let images of bannerItems){
+        //         if(counter==0){
+        //             this.singleImageBanner.push(images);
+        //         }else if (counter >0 && counter <=4) {
+        //             this.fourImageBanner.push(images);
+        //         }else{
+        //             this.advancedCard.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
+
+        //if(bannerItems.length >8 ){
+        // if(bannerItems.length >5 ){
+        //     let counter=0;
+        //     let singleImageCount=bannerItems.length -5;
+        //     for(let images of bannerItems){
+        //         if(counter <=singleImageCount){
+        //             this.singleImageBanner.push(images);
+        //         }else if (counter >singleImageCount && counter <= singleImageCount+4) {
+        //             this.fourImageBanner.push(images);
+        //         }else{
+        //             this.advancedCard.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
 
         console.log("Sinlge Image banner",this.singleImageBanner);
         console.log("Four Image banner",this.fourImageBanner);

@@ -67,34 +67,46 @@ export class ComponentServicesSearchFiles{
             }
         }
 
-        if(imageArrays.length >5 && imageArrays.length <=8){
+        if(imageArrays.length >5){
             let counter=0;
             for(let images of imageArrays){
-                if(counter==0){
+                if(counter < imageArrays.length -4){
                     this.singleImageBanner.push(images);
-                }else if (counter >0 && counter <=4) {
-                    this.fourImageBanner.push(images);
                 }else{
-                    this.advancedCard.push(images);
+                    this.fourImageBanner.push(images);
                 }
                 counter ++;
             }
         }
 
-        if(imageArrays.length >8 ){
-            let counter=0;
-            let singleImageCount=imageArrays.length -8;
-            for(let images of imageArrays){
-                if(counter <=singleImageCount){
-                    this.singleImageBanner.push(images);
-                }else if (counter >singleImageCount && counter <= singleImageCount+4) {
-                    this.fourImageBanner.push(images);
-                }else{
-                    this.advancedCard.push(images);
-                }
-                counter ++;
-            }
-        }
+        // if(imageArrays.length >5 && imageArrays.length <=8){
+        //     let counter=0;
+        //     for(let images of imageArrays){
+        //         if(counter==0){
+        //             this.singleImageBanner.push(images);
+        //         }else if (counter >0 && counter <=4) {
+        //             this.fourImageBanner.push(images);
+        //         }else{
+        //             this.advancedCard.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
+
+        // if(imageArrays.length >8 ){
+        //     let counter=0;
+        //     let singleImageCount=imageArrays.length -8;
+        //     for(let images of imageArrays){
+        //         if(counter <=singleImageCount){
+        //             this.singleImageBanner.push(images);
+        //         }else if (counter >singleImageCount && counter <= singleImageCount+4) {
+        //             this.fourImageBanner.push(images);
+        //         }else{
+        //             this.advancedCard.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
 
         console.log("Sinlge Image banner My Pictures",this.singleImageBanner);
         console.log("Four Image banner My Pictures",this.fourImageBanner);
