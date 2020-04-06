@@ -42,8 +42,8 @@ export default class ClientPortalWebPart extends BaseClientSideWebPart<IClientPo
     SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css");
     // SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css");
     jQuery("#workbenchPageContent").prop("style", "max-width: none");
-    jQuery(".SPCanvas-canvas").prop("style", "max-width: none");
-    jQuery(".CanvasZone").prop("style", "max-width: none");
+    // jQuery(".SPCanvas-canvas").prop("style", "max-width: none");
+    // jQuery(".CanvasZone").prop("style", "max-width: none");
 
 
     const element: React.ReactElement<IClientPortalProps > = React.createElement(

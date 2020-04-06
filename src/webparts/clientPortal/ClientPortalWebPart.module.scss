@@ -1,3 +1,6 @@
+
+@import'~office-ui-fabric-react/dist/sass/References.scss';
+
 nav[role='navigation'] {
     display: none !important;
 }
@@ -22,14 +25,18 @@ div[class^='pageTitle_'] {
   display: none !important;
 }
 
+div[class^='headerRow-'] {
+  display: none !important;
+}
+
 div[class='commandBarWrapper'] {
   display: none !important;
 }
 
-div[class='CanvasZone'] {
-  max-width:  none !important;
-}
+// div[class='CanvasZone'] {
+//   max-width:  none !important;
+// }
 
-div[class='SPCanvas-canvas'] {
-  max-width:  none !important;
-}
+// div[class='SPCanvas-canvas'] {
+//   max-width:  none !important;
+// }

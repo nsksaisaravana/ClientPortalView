@@ -15,48 +15,53 @@ export class ComponentServicesGellibrandNews{
             description:''
         };
         let bannerItems=[];//,singleImageBanner=[],fourImageBanner=[],advancedCard=[];
+        let counter=0;
         for(let file of news){
             if(file.BannerImageUrl){
-                const response = await fetch(
-                    file.BannerImageUrl.Url
-                );
-                let itemBlob = await response.blob();
-                let item = new Blob([itemBlob], {
-                    type:`application/jpg`  //'application/pdf'
-                });
-                var fileURL = URL.createObjectURL(item);
-                console.log(fileURL);
+                // const response = await fetch(
+                //     file.BannerImageUrl.Url
+                // );
+                // let itemBlob = await response.blob();
+                // let item = new Blob([itemBlob], {
+                //     type:`application/jpg`  //'application/pdf'
+                // });
+                // var fileURL = URL.createObjectURL(item);
+                // console.log(fileURL);
                 let bannerItem={} as any;
-                bannerItem.blob=fileURL;
+                bannerItem.blob=file.BannerImageUrl.Url;
                 bannerItem.title=file.Title;
                 bannerItem.description=file.Description;
+                bannerItem.url=file.FileRef;
                 bannerItems.push(bannerItem);
             }
         }
-        console.log("Banner Items",bannerItems);
-        if(bannerItems.length <=5){
-            let counter=0;
-            for(let images of bannerItems){
-                if(counter==0){
-                    this.singleImageBanner.push(images);
-                }else{
-                    this.fourImageBanner.push(images);
-                }
-                counter ++;
-            }
-        }
 
-        if(bannerItems.length >5){
-            let counter=0;
-            for(let images of bannerItems){
-                if(counter < bannerItems.length -4){
-                    this.singleImageBanner.push(images);
-                }else{
-                    this.fourImageBanner.push(images);
-                }
-                counter ++;
-            }
-        }
+        this.singleImageBanner=bannerItems;
+
+        // console.log("Banner Items",bannerItems);
+        // if(bannerItems.length <=5){
+        //     let counter=0;
+        //     for(let images of bannerItems){
+        //         if(counter==0){
+        //             this.singleImageBanner.push(images);
+        //         }else{
+        //             this.fourImageBanner.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
+
+        // if(bannerItems.length >5){
+        //     let counter=0;
+        //     for(let images of bannerItems){
+        //         if(counter < bannerItems.length -4){
+        //             this.singleImageBanner.push(images);
+        //         }else{
+        //             this.fourImageBanner.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
 
         // if(bannerItems.length >5 && bannerItems.length <=8){
         //     let counter=0;

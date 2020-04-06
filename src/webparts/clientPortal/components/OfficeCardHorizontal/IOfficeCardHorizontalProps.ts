@@ -1,4 +1,4 @@
 
 export interface IOfficeDocumentCardHorizontalPropValues{
-    propImagePath:string;
+    teamItem:any;
 }

@@ -8,7 +8,13 @@ import styles from './OfficePivot.module.scss';
 import parse from 'html-react-parser';
 import ResizeImage from 'react-resize-image';
 import { MyDocsAntDataTable } from '../AntDataTable';
-
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
+const stackItemStyle : IStackItemStyles = {
+    root: {
+      width: '100%'
+    }
+  };
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
     root: { marginTop: 10 }
   };
@@ -41,9 +47,15 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 }}
                 >
                    <div >
-                        <div className="row">
+                        <Stack style={{width:'100%'}} tokens={sectionStackTokens}>
+                        {this.props.propSingleImageBannerForGellibrandNews.map(item=>(
+                                <Stack.Item styles={stackItemStyle}>
+                                    <OfficeCardHorizontal teamItem={item}></OfficeCardHorizontal>
+                                </Stack.Item>
+                            ))}
+                        </Stack>
+                        {/* <div className="row">
                             <div className="col-sm">
-                                {/* <BootstrapCarousel></BootstrapCarousel> */}
                                 <DynamicCarousel propImageItems={this.props.propSingleImageBannerForGellibrandNews}></DynamicCarousel>
                             </div>
                             <div className="col-sm">
@@ -69,7 +81,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         {/* <div className="row mt-5">
                             <h3>Latest News from our Gellibrand</h3>
                         </div>
