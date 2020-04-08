@@ -12,7 +12,8 @@ export class ComponentContextClientDocuments{
         // let clientDetails= await DataServicesClientNames.getClientNameByEmailId(connectionDetails.endPoint,
         //     DataServiceBaseFile.returnLoginEmailId());
         console.log("ClientDetails",clientDetails);
-        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND (FileExtension:"docx" OR FileExtension:"xlsx" OR FileExtension:"pptx" OR FileExtension:"pdf") `;
+        //let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND (FileExtension:"docx" OR FileExtension:"xlsx" OR FileExtension:"pptx" OR FileExtension:"pdf") `;
+        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND MetaData3:"Documents"`;
         let searchDetails=await DataServicesSearchResults.getSearchResults(connectionDetails.endPoint,kqlQuery,
             teamDetails.SearchSourceId,500,0,DataServiceBaseFile.spHttpClient,
             DataServiceBaseFile.spHttpOptions);

@@ -36,7 +36,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
   public render(): React.ReactElement<IClientPortalProps> {
     if(!this.state.isPageLoading){
       return (
-        <div >
+        <div style={{marginTop:100}} >
           <Spinner propShowSpinner={this.state.showSpinner}></Spinner>
           <OfficePivot 
            
