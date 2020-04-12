@@ -34,13 +34,23 @@ export class ComponentContextHousePictures{
                     let listItem=await DataServicesDigitalLibrary.getItemById(listEndPoint,cell.Value);
                     console.log(`${listItem.FileDirRef}/${listItem.FieldValuesAsText.FileLeafRef} ` );
                     let path=`${listItem.FileDirRef}/${listItem.FieldValuesAsText.FileLeafRef} `;
-                    let itemBlob=await DataServicesDigitalLibrary.getItemBlob(listEndPoint,path);
+                    // let itemBlob=await DataServicesDigitalLibrary.getItemBlob(listEndPoint,path);
                     let blobItem={} as any;
-                    var file = new Blob([itemBlob], {
-                        type:`application/${listItem.File_x0020_Type}`  //'application/pdf'
-                      });
-                    var fileURL = URL.createObjectURL(file);
-                    blobItem.blob=fileURL;
+                    // var file = new Blob([itemBlob], {
+                    //     type:`application/${listItem.File_x0020_Type}`  //'application/pdf'
+                    //   });
+                    // var fileURL = URL.createObjectURL(file);
+                    blobItem.blob=`https://gellibrandss.sharepoint.com/_api/v2.0/sharePoint:${path}:/driveItem/thumbnails/0/c343x457/content`;
+                    // const response = await fetch(
+                    //     path
+                    // );
+                    // let itemBlob = await response.blob();
+                    // let imageItemBlob = new Blob([itemBlob], {
+                    //     type:`application/jpg`  //'application/pdf'
+                    // });
+
+                    // var fileURL = URL.createObjectURL(imageItemBlob);
+                    // blobItem.blob=fileURL;
                     blobItem.fileType=listItem.File_x0020_Type;
                     
                     housePictures.push(blobItem);
@@ -49,31 +59,31 @@ export class ComponentContextHousePictures{
         }
         console.log(housePictures);
         //return imageArrays;
+        this.singleImageBanner=housePictures;
+        // console.log("House Pictures Items",housePictures);
+        // if(housePictures.length <=5){
+        //     let counter=0;
+        //     for(let images of housePictures){
+        //         if(counter==0){
+        //             this.singleImageBanner.push(images);
+        //         }else{
+        //             this.fourImageBanner.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
 
-        console.log("House Pictures Items",housePictures);
-        if(housePictures.length <=5){
-            let counter=0;
-            for(let images of housePictures){
-                if(counter==0){
-                    this.singleImageBanner.push(images);
-                }else{
-                    this.fourImageBanner.push(images);
-                }
-                counter ++;
-            }
-        }
-
-        if(housePictures.length >5){
-            let counter=0;
-            for(let images of housePictures){
-                if(counter < housePictures.length -4){
-                    this.singleImageBanner.push(images);
-                }else{
-                    this.fourImageBanner.push(images);
-                }
-                counter ++;
-            }
-        }
+        // if(housePictures.length >5){
+        //     let counter=0;
+        //     for(let images of housePictures){
+        //         if(counter < housePictures.length -4){
+        //             this.singleImageBanner.push(images);
+        //         }else{
+        //             this.fourImageBanner.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
 
         // if(housePictures.length >5 && housePictures.length <=8){
         //     let counter=0;

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
 import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
-import {IOfficeDocumentCardHorizontalPropValues} from './index';
+import {IImageHorizontalPropValues} from './index';
 
-export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHorizontalPropValues, {}> {
+export  class ImageHorizontal extends React.Component<IImageHorizontalPropValues, {}> {
 
   constructor(props) {
       super(props);
@@ -53,22 +53,10 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
 
     return (
       <div className="ms-Grid-row">
-      <Stack tokens={sectionStackTokens} style={{width:'100%'}}>
+        <Image  src={this.props.teamItem.blob} alt="Placeholder image." height="42" width="42" />
+      {/* <Stack tokens={sectionStackTokens} style={{width:'100%'}}>
         <div className="ms-Grid-col hiddenLgUp">
           <Card horizontal onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
-            <Card.Item fill>
-              <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:200,width:343}}  />
-            </Card.Item>
-            <Card.Section>
-              <Text variant="large" styles={siteTextStyles}>
-                {this.props.teamItem.title}
-              </Text>
-              <Text styles={descriptionTextStyles}>{this.props.teamItem.description}</Text>
-            </Card.Section>
-          </Card>
-        </div>
-        {/* <div className="ms-Grid-col  hiddenMdUp">
-          <Card  onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
             <Card.Item fill>
               <Image  src={this.props.teamItem.blob} alt="Placeholder image." height="42" width="42" />
             </Card.Item>
@@ -79,8 +67,8 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
               <Text styles={descriptionTextStyles}>{this.props.teamItem.description}</Text>
             </Card.Section>
           </Card>
-        </div> */}
-      </Stack>
+        </div>
+      </Stack> */}
       </div>
     );
   

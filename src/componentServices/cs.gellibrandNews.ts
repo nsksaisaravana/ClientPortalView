@@ -19,7 +19,7 @@ export class ComponentServicesGellibrandNews{
         for(let file of news){
             if(file.BannerImageUrl){
                 // const response = await fetch(
-                //     file.BannerImageUrl.Url
+                //     `https://gellibrandss.sharepoint.com/_api/v2.0/sharePoint:${file.FileRef}:/driveItem/thumbnails/0/c343x457/content`
                 // );
                 // let itemBlob = await response.blob();
                 // let item = new Blob([itemBlob], {
@@ -28,7 +28,8 @@ export class ComponentServicesGellibrandNews{
                 // var fileURL = URL.createObjectURL(item);
                 // console.log(fileURL);
                 let bannerItem={} as any;
-                bannerItem.blob=file.BannerImageUrl.Url;
+                //bannerItem.blob=file.BannerImageUrl.Url;
+                bannerItem.blob= `https://gellibrandss.sharepoint.com/_api/v2.0/sharePoint:${file.FileRef}:/driveItem/thumbnails/0/c343x457/content`;
                 bannerItem.title=file.Title;
                 bannerItem.description=file.Description;
                 bannerItem.url=file.FileRef;

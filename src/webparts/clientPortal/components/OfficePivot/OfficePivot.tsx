@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard,DynamicCarousel} from '../index';
+import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard,DynamicCarousel,ImageHorizontal} from '../index';
 import {IOfficePivotStateValues,IOfficePivotPropValues} from './index';
 import styles from './OfficePivot.module.scss';
 import parse from 'html-react-parser';
@@ -109,12 +109,27 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 <PivotItem headerText="House PIC & NEWS">
                     <div>
                         <div className="row">
+                            {/* <DynamicCarousel propImageItems={this.props.propSingleImageBannerForHouseNews}></DynamicCarousel> */}
+                            {/* <Stack tokens={sectionStackTokens}>
+                            {this.props.propSingleImageBannerForHouseNews.map(item=>(
+                                    <Stack.Item styles={stackItemStyle}>
+                                        <ImageHorizontal teamItem={item}></ImageHorizontal>
+                                    </Stack.Item>
+                                ))}
+                            </Stack> */}
+                        </div>
+                        <Stack style={{width:'100%'}} tokens={sectionStackTokens}>
+                        {this.props.propSingleImageBannerForHouseNews.map(item=>(
+                                <Stack.Item styles={stackItemStyle}>
+                                    <OfficeCardHorizontal teamItem={item}></OfficeCardHorizontal>
+                                </Stack.Item>
+                            ))}
+                        </Stack>
+                        {/* <div className="row">
                             <div className="col-sm">
-                                {/* <BootstrapCarousel></BootstrapCarousel> */}
                                 <DynamicCarousel propImageItems={this.props.propSingleImageBannerForHouseNews}></DynamicCarousel>
                             </div>
                             <div className="col-sm">
-                                {/* <BootstrapCarousel></BootstrapCarousel> */}
                                 <div className="row">
                                     <div className="col">
                                         <img src={this.props.propFourImageBannerForHouseNews ?this.props.propFourImageBannerForHouseNews[0].blob:''}  style={{width:411,height:181}}/>
@@ -136,7 +151,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         {/* <div className="row mt-5">
                             <h3>Latest News from our House</h3>
                         </div>
@@ -151,13 +166,11 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 </PivotItem>
                 <PivotItem headerText="My PICTURES">
                     <div>
-                        <div className="row">
+                        {/* <div className="row">
                             <div className="col-sm">
-                                {/* <BootstrapCarousel></BootstrapCarousel> */}
                                 <DynamicCarousel propImageItems={this.props.propSingleImageBannerForMyPictures}></DynamicCarousel>
                             </div>
                             <div className="col-sm">
-                                {/* <BootstrapCarousel></BootstrapCarousel> */}
                                 <div className="row">
                                     <div className="col">
                                         <img src={this.props.propFourImageBannerForMyPictures ?this.props.propFourImageBannerForMyPictures[0].blob:''}  style={{width:411,height:181}}/>
@@ -179,7 +192,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         {/* <div className="row mt-5">
                             {this.props.propAdvancedCardForMyPictures.map(item=>(
                                 <div className="col-sm col-md justify-content-center">
