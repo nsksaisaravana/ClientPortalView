@@ -13,7 +13,8 @@ export class ComponentContextHousePictures{
 
         let teamDetails=ComponentContextInitialSetUpDetails.returnTeam();
         let connectionDetails=ComponentContextConnectionString.setLibraryAndEndPoint(teamDetails);
-        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].Site.Title}" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx") `;
+        //let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].Site.Title}" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx") `;
+        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].Site.Title}" AND MetaData3:"Pictures" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx") `;
         let searchDetails=await DataServicesSearchResults.getSearchResults(connectionDetails.endPoint,kqlQuery,
             teamDetails.SearchSourceId,500,0,DataServiceBaseFile.spHttpClient,
             DataServiceBaseFile.spHttpOptions);
@@ -52,7 +53,8 @@ export class ComponentContextHousePictures{
                     // var fileURL = URL.createObjectURL(imageItemBlob);
                     // blobItem.blob=fileURL;
                     blobItem.fileType=listItem.File_x0020_Type;
-                    
+                    blobItem.title=listItem.DocTitle;
+                    blobItem.description=listItem.DocDescription;
                     housePictures.push(blobItem);
                 }
             }

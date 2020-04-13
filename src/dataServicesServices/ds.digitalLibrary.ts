@@ -6,7 +6,7 @@ export class DataServicesDigitalLibrary{
 
         let web = new Web(recordPoint);
         return web.lists.getByTitle("DigitalLibrary").items
-        .select("Title","Id","File_x0020_Type","FileDirRef","FieldValuesAsText/FileLeafRef")
+        .select("Title","Id","File_x0020_Type","FileDirRef","FieldValuesAsText/FileLeafRef","DocTitle","DocDescription")
         .expand("FieldValuesAsText")
         // .getById(itemId).get().then((item)=>{
         //     console.log(item);
