@@ -54,7 +54,7 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
     return (
       <div className="ms-Grid-row">
       <Stack tokens={sectionStackTokens} style={{width:'100%'}}>
-        <div className="ms-Grid-col hiddenLgUp">
+        <div className="ms-Grid-col ms-hiddenLgDown">
           <Card horizontal onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
             <Card.Item fill>
               <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:200,width:343}}  />
@@ -67,19 +67,19 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
             </Card.Section>
           </Card>
         </div>
-        {/* <div className="ms-Grid-col  hiddenMdUp">
+        <div className="ms-Grid-col  ms-hiddenLgUp">
           <Card  onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
             <Card.Item fill>
-              <Image  src={this.props.teamItem.blob} alt="Placeholder image." height="42" width="42" />
+              <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:100,width:235}} />
             </Card.Item>
             <Card.Section>
               <Text variant="large" styles={siteTextStyles}>
-                {this.props.teamItem.title}
+                {this.props.teamItem.title? `${this.props.teamItem.title.substring(0,20)}...`:''}
               </Text>
-              <Text styles={descriptionTextStyles}>{this.props.teamItem.description}</Text>
+              <Text styles={descriptionTextStyles}>{this.props.teamItem.description ?`${this.props.teamItem.description.substring(0,20)}...`:'' }</Text>
             </Card.Section>
           </Card>
-        </div> */}
+        </div>
       </Stack>
       </div>
     );

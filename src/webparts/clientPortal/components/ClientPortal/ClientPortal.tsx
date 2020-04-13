@@ -36,22 +36,23 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
   public render(): React.ReactElement<IClientPortalProps> {
     if(!this.state.isPageLoading){
       return (
-        <div style={{marginTop:100}} >
-          <Spinner propShowSpinner={this.state.showSpinner}></Spinner>
-          <OfficePivot 
-           
-            propSingleImageBannerForGellibrandNews={this.state.singleImageBannerForGellibrandNews}
-            propFourImageBannerForGellibrandNews={this.state.fourImageBannerForGellibrandNews}
-            propAdvancedCardForGellibrandNews={this.state.advancedCardForGellibrandNews}
-            propSingleImageBannerForHouseNews={this.state.singleImageBannerForHouseNews}
-            propFourImageBannerForHouseNews={this.state.fourImageBannerForHouseNews}
-            propAdvancedCardForHouseNews={this.state.advancedCardForHouseNews}
-            propSingleImageBannerForMyPictures={this.state.singleImageBannerForMyPictures}
-            propFourImageBannerForMyPictures={this.state.fourImageBannerForMyPictures}
-            propAdvancedCardForMyPictures={this.state.advancedCardForMyPicutures}
-            propClientDocuments={this.state.clientDocuments}
-            propEventDetails={this.state.clientEventDetails}
-            ></OfficePivot>
+        <div className="ms-Grid-row">
+          <div  >
+            <Spinner propShowSpinner={this.state.showSpinner}></Spinner>
+            <OfficePivot 
+              propSingleImageBannerForGellibrandNews={this.state.singleImageBannerForGellibrandNews}
+              propFourImageBannerForGellibrandNews={this.state.fourImageBannerForGellibrandNews}
+              propAdvancedCardForGellibrandNews={this.state.advancedCardForGellibrandNews}
+              propSingleImageBannerForHouseNews={this.state.singleImageBannerForHouseNews}
+              propFourImageBannerForHouseNews={this.state.fourImageBannerForHouseNews}
+              propAdvancedCardForHouseNews={this.state.advancedCardForHouseNews}
+              propSingleImageBannerForMyPictures={this.state.singleImageBannerForMyPictures}
+              propFourImageBannerForMyPictures={this.state.fourImageBannerForMyPictures}
+              propAdvancedCardForMyPictures={this.state.advancedCardForMyPicutures}
+              propClientDocuments={this.state.clientDocuments}
+              propEventDetails={this.state.clientEventDetails}
+              ></OfficePivot>
+          </div>
         </div>
       );
     }else{
