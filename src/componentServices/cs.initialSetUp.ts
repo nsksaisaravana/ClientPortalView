@@ -6,6 +6,7 @@ import { DataServicesClientNames, DataServiceBaseFile } from "../dataServicesSer
 export class ComponentContextInitialSetUpDetails{
     
     private static selectedTeam;
+    public static clientDetails;
 
     public static returnTeam(){
         let teamDetails= DepartmentConfiguration.returnDigitalLibraryDetails();
@@ -16,8 +17,10 @@ export class ComponentContextInitialSetUpDetails{
         let teamDetails=this.returnTeam();
         let connectionDetails=ComponentContextConnectionString.setLibraryAndEndPoint(teamDetails);
     
-        let clientDetails= await DataServicesClientNames.getClientNameByEmailId(connectionDetails.endPoint,
+        this.clientDetails= await DataServicesClientNames.getClientNameByEmailId(connectionDetails.endPoint,
             DataServiceBaseFile.returnLoginEmailId());
-        return clientDetails;
+        return this.clientDetails;
     }
+
+
 }

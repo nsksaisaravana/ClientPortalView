@@ -12,7 +12,7 @@ export class ComponentServicesEventDetails{
         let connectionDetails=ComponentContextConnectionString.setLibraryAndEndPoint(teamDetails);
 
         let eventDetails=await DataServicesEventDetails.fetchEventDetailsByHouseNameOrClientName(connectionDetails.endPoint,
-            clientDetails[0].Site.Title,"Gellibrand");
+            clientDetails[0].Site.Title,clientDetails[0].ClientName.Title);
 
         let counter=0;
         let fromDate='';

@@ -2,12 +2,14 @@ import * as React from 'react';
 import styles from './ClientPortal.module.scss';
 import { IClientPortalProps,IClientPortalState } from './index';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { Spinner,OfficePivot} from '../index';
+import { Spinner,OfficePivot,AntDropdown} from '../index';
 import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews, ComponentContextInitialSetUpDetails, 
   ComponentContextHousePictures,ComponentContextClientDocuments,
   ComponentServicesEventDetails} from '../../../../componentServices/index';
 import { DataServiceBaseFile } from '../../../../dataServicesServices';
 export default class ClientPortal extends React.Component<IClientPortalProps, IClientPortalState> {
+
+  private clientDetails:any=[];
 
   constructor(props){
     super(props);
@@ -28,7 +30,9 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
       fourImageBannerForMyPictures:null,
       advancedCardForMyPicutures:[],
       clientDocuments:[],
-      clientEventDetails:[]
+      clientEventDetails:[],
+      clientNameDetails:[],
+      clientSelectedName:''
     };
     DataServiceBaseFile.pageLoad(this.props.context);
   }
@@ -36,22 +40,29 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
   public render(): React.ReactElement<IClientPortalProps> {
     if(!this.state.isPageLoading){
       return (
-        <div className="ms-Grid-row">
-          <div  >
-            <Spinner propShowSpinner={this.state.showSpinner}></Spinner>
-            <OfficePivot 
-              propSingleImageBannerForGellibrandNews={this.state.singleImageBannerForGellibrandNews}
-              propFourImageBannerForGellibrandNews={this.state.fourImageBannerForGellibrandNews}
-              propAdvancedCardForGellibrandNews={this.state.advancedCardForGellibrandNews}
-              propSingleImageBannerForHouseNews={this.state.singleImageBannerForHouseNews}
-              propFourImageBannerForHouseNews={this.state.fourImageBannerForHouseNews}
-              propAdvancedCardForHouseNews={this.state.advancedCardForHouseNews}
-              propSingleImageBannerForMyPictures={this.state.singleImageBannerForMyPictures}
-              propFourImageBannerForMyPictures={this.state.fourImageBannerForMyPictures}
-              propAdvancedCardForMyPictures={this.state.advancedCardForMyPicutures}
-              propClientDocuments={this.state.clientDocuments}
-              propEventDetails={this.state.clientEventDetails}
-              ></OfficePivot>
+        <div>
+          <div className="ms-Grid-row" style={{display:this.state.clientNameDetails.length>1  ? '' : 'none'}}>
+            <AntDropdown propDefaultValue={this.state.clientSelectedName} propDropdownValues={this.state.clientNameDetails} propSetBlankValue={""} 
+              propDropdownValuesPlaceHolder="" propDocumentCompleted={this.dropDownCompleted} propDropdownIndexChanged={this.dropDownIndexChanged}
+            ></AntDropdown>
+          </div>
+          <div className="ms-Grid-row">
+            <div  >
+              <Spinner propShowSpinner={this.state.showSpinner}></Spinner>
+              <OfficePivot 
+                propSingleImageBannerForGellibrandNews={this.state.singleImageBannerForGellibrandNews}
+                propFourImageBannerForGellibrandNews={this.state.fourImageBannerForGellibrandNews}
+                propAdvancedCardForGellibrandNews={this.state.advancedCardForGellibrandNews}
+                propSingleImageBannerForHouseNews={this.state.singleImageBannerForHouseNews}
+                propFourImageBannerForHouseNews={this.state.fourImageBannerForHouseNews}
+                propAdvancedCardForHouseNews={this.state.advancedCardForHouseNews}
+                propSingleImageBannerForMyPictures={this.state.singleImageBannerForMyPictures}
+                propFourImageBannerForMyPictures={this.state.fourImageBannerForMyPictures}
+                propAdvancedCardForMyPictures={this.state.advancedCardForMyPicutures}
+                propClientDocuments={this.state.clientDocuments}
+                propEventDetails={this.state.clientEventDetails}
+                ></OfficePivot>
+            </div>
           </div>
         </div>
       );
@@ -63,23 +74,34 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
 
   public componentDidMount(){
-   
     this.pageLoad();
-    
-    
+  }
+
+  public dropDownCompleted=(value)=>{
+    console.log(value);
+  }
+
+  public dropDownIndexChanged=async(value)=>{
+    console.log(value);
+    let clientItem=this.clientDetails.filter(item=> item.ClientName.Title==value);
+    await Promise.all([this.getClientFiles(clientItem),
+      this.getHouseNews(clientItem),this.getClientDocuments(clientItem)
+    ]);
   }
 
   public async pageLoad(){
-    let clientDetails=await ComponentContextInitialSetUpDetails.getClientNameByEmailId();
+    this.clientDetails=await ComponentContextInitialSetUpDetails.getClientNameByEmailId();
     // await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
     //   this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails),
     //   this.getEventDetails(clientDetails)]);
-    this.getEventDetails(clientDetails);
-    await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
-      this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails)
+    this.getEventDetails(this.clientDetails);
+    await Promise.all([this.getGellibrandNews(),this.getClientFiles(this.clientDetails),
+      this.getHouseNews(this.clientDetails),this.getClientDocuments(this.clientDetails)
       ]);
     this.setState({
-      isPageLoading:false
+      isPageLoading:false,
+      clientNameDetails:this.clientDetails,
+      clientSelectedName:this.clientDetails[0].ClientName.Title
     });
     // this.getGellibrandNews();
     // this.getClientFiles(clientDetails);
@@ -87,8 +109,6 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
   }
 
   public getClientFiles(clientDetails){
-   
-
     return ComponentServicesSearchFiles.getClientFiles(clientDetails).then(()=>{
       this.setState({
         singleImageBannerForMyPictures:ComponentServicesSearchFiles.singleImageBanner,

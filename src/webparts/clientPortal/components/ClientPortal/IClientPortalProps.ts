@@ -25,4 +25,7 @@ export interface IClientPortalState{
   clientDocuments:any;
 
   clientEventDetails:any;
+
+  clientNameDetails:any;
+  clientSelectedName:string;
 }
