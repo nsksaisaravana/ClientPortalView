@@ -28,6 +28,13 @@ export class DataServiceBaseFile{
       });   
     }
 
+    public static getUserDetails(): Promise<any> {
+      return pnp.sp.site.rootWeb.ensureUser(this.userEmail).then(result => {
+        //return result.data.Id;
+        return result;
+      });   
+    }
+
     public static returnEndPointForRespectiveSite(sitePath){
       return "https://gellibrandss.sharepoint.com/sites/Intranet/ManageDocuments" +'_api/web/lists/';
   }

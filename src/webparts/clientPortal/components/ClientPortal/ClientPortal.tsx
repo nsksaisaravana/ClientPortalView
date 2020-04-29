@@ -7,6 +7,34 @@ import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews, ComponentC
   ComponentContextHousePictures,ComponentContextClientDocuments,
   ComponentServicesEventDetails} from '../../../../componentServices/index';
 import { DataServiceBaseFile } from '../../../../dataServicesServices';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    padding: 5,
+  },
+};
+
+
+// Styles definition
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.themeTertiary,
+  },
+};
+const itemStyles: React.CSSProperties = {
+  alignItems: 'center',
+  //background: DefaultPalette.themePrimary,
+  color: DefaultPalette.white,
+  display: 'flex',
+  height: 50,
+  justifyContent: 'center',
+  width: 50,
+};
+
 export default class ClientPortal extends React.Component<IClientPortalProps, IClientPortalState> {
 
   private clientDetails:any=[];
@@ -32,7 +60,8 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
       clientDocuments:[],
       clientEventDetails:[],
       clientNameDetails:[],
-      clientSelectedName:''
+      clientSelectedName:'',
+      loginUserName:''
     };
     DataServiceBaseFile.pageLoad(this.props.context);
   }
@@ -41,6 +70,14 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     if(!this.state.isPageLoading){
       return (
         <div>
+         {/* <Stack horizontal horizontalAlign="space-between" styles={stackStyles}> */}
+         <Stack horizontal horizontalAlign="space-between" >
+          <span >
+            <img src={'/sites/Intranet/SiteAssets/__sitelogo__Gellibrand.png'} style={{height:50,width:150}}/>
+          </span>
+          <span ><b>Client Portal</b></span>
+          <span >Welcome<br></br><b>{this.state.loginUserName}</b></span>
+        </Stack>
           <div className="ms-Grid-row" style={{display:this.state.clientNameDetails.length>1  ? '' : 'none'}}>
             <AntDropdown propDefaultValue={this.state.clientSelectedName} propDropdownValues={this.state.clientNameDetails} propSetBlankValue={""} 
               propDropdownValuesPlaceHolder="" propDocumentCompleted={this.dropDownCompleted} propDropdownIndexChanged={this.dropDownIndexChanged}
@@ -75,10 +112,19 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
   public componentDidMount(){
     this.pageLoad();
+    this.getUserDetails();
   }
 
   public dropDownCompleted=(value)=>{
     console.log(value);
+  }
+
+  public  getUserDetails=async ()=>{
+    let userDetails:any=await DataServiceBaseFile.getUserDetails();
+    console.log(userDetails);
+    this.setState({
+      loginUserName:userDetails.data.Title
+    });
   }
 
   public dropDownIndexChanged=async(value)=>{

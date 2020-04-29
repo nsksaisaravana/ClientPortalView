@@ -28,4 +28,5 @@ export interface IClientPortalState{
 
   clientNameDetails:any;
   clientSelectedName:string;
+  loginUserName:string;
 }
