@@ -35,13 +35,16 @@ div[class='commandBarWrapper'] {
 
 div[class^='ms-Pivot'] {
   background: #1cb7ea !important;
-  padding: 0 10px;
+  padding: 10px 10px 0;
   overflow: 'auto';
   
   button {
      color: white !important;
      &::before {
       border-bottom: unset;
+    }
+    div {
+      justify-content: center;
     }
      span {
       opacity: 0.90;
