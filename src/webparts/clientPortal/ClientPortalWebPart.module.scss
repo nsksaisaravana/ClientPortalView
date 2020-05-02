@@ -33,6 +33,34 @@ div[class='commandBarWrapper'] {
   display: none !important;
 }
 
+div[class^='ms-Pivot'] {
+  background: #1cb7ea !important;
+  padding: 0 10px;
+  overflow: 'auto';
+  
+  button {
+     color: white !important;
+     &::before {
+      border-bottom: unset;
+    }
+     span {
+      opacity: 0.90;
+     }
+     &:hover {
+      span {
+        opacity: 1;
+       }
+     }
+  }
+  button[aria-selected='true'] {
+    color: #276ead !important;
+    background-color: white !important;
+    span {
+      opacity: 1;
+    }
+  }
+}
+
 // div[class='CanvasZone'] {
 //   max-width:  none !important;
 // }
