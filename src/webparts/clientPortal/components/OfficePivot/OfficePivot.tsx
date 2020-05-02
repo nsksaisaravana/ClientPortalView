@@ -4,7 +4,7 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard,DynamicCarousel,ImageHorizontal} from '../index';
 import {IOfficePivotStateValues,IOfficePivotPropValues} from './index';
-import styles from './OfficePivot.module.scss';
+import './OfficePivot.module.scss';
 import parse from 'html-react-parser';
 import ResizeImage from 'react-resize-image';
 import { MyDocsAntDataTable } from '../AntDataTable';
@@ -45,6 +45,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                     'data-order': 1,
                     'data-title': 'Gellibrand PIC & NEWS'
                 }}
+                
                 >
                    <div >
                         <Stack style={{width:'100%'}} tokens={sectionStackTokens}>

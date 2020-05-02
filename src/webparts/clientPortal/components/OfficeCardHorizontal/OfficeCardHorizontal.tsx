@@ -15,7 +15,7 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
     const siteTextStyles: ITextStyles = {
       root: {
         color: '#025F52',
-        fontWeight: FontWeights.regular
+        fontWeight: FontWeights.bold
       }
     };
     const descriptionTextStyles: ITextStyles = {
@@ -54,10 +54,12 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
     return (
       <div className="ms-Grid-row">
       <Stack tokens={sectionStackTokens} style={{width:'100%'}}>
-        <div className="ms-Grid-col ms-hiddenLgDown">
-          <Card horizontal onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
+        <div className="ms-Grid-col ms-hiddenMdDown" style={{ marginTop: '14px', padding: '0 16px' }}>
+          <Card horizontal onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens} >
             <Card.Item fill>
-              <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:200,width:343}}  />
+              <div style={{ height: '200px', width: '343px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
+                <img  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:'100%'}} />
+              </div>
             </Card.Item>
             <Card.Section>
               <Text variant="large" styles={siteTextStyles}>
@@ -70,7 +72,9 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
         <div className="ms-Grid-col  ms-hiddenLgUp">
           <Card  onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
             <Card.Item fill>
-              <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:100,width:235}} />
+              <div style={{ height: '130px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
+                <img  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:'100%'}} />
+              </div>
             </Card.Item>
             <Card.Section>
               <Text variant="large" styles={siteTextStyles}>
