@@ -41,7 +41,7 @@ export class ComponentContextHousePictures{
                     //     type:`application/${listItem.File_x0020_Type}`  //'application/pdf'
                     //   });
                     // var fileURL = URL.createObjectURL(file);
-                    blobItem.blob=`https://gellibrandss.sharepoint.com/_api/v2.0/sharePoint:${path}:/driveItem/thumbnails/0/c343x457/content`;
+                    //blobItem.blob=`https://gellibrandss.sharepoint.com/_api/v2.0/sharePoint:${path}:/driveItem/thumbnails/0/c343x457/content`;
                     // const response = await fetch(
                     //     path
                     // );
@@ -51,7 +51,7 @@ export class ComponentContextHousePictures{
                     // });
 
                     // var fileURL = URL.createObjectURL(imageItemBlob);
-                    // blobItem.blob=fileURL;
+                    blobItem.blob=path;
                     blobItem.fileType=listItem.File_x0020_Type;
                     blobItem.title=listItem.DocTitle;
                     blobItem.description=listItem.DocDescription;
