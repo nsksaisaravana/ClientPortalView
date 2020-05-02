@@ -166,6 +166,13 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 </PivotItem>
                 <PivotItem headerText="My PICTURES">
                     <div>
+                        <Stack style={{width:'100%'}} tokens={sectionStackTokens}>
+                            {this.props.propSingleImageBannerForMyPictures.map(item=>(
+                                <Stack.Item styles={stackItemStyle}>
+                                    <OfficeCardHorizontal teamItem={item}></OfficeCardHorizontal>
+                                </Stack.Item>
+                            ))}
+                        </Stack>
                         {/* <div className="row">
                             <div className="col-sm">
                                 <DynamicCarousel propImageItems={this.props.propSingleImageBannerForMyPictures}></DynamicCarousel>

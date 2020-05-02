@@ -29,14 +29,14 @@ export class DataServicesEventDetails{
         return items;
     }
 
-    public static async fetchEventDetailsByHouseNameOrClientName(endPoint,clientName,houseName):Promise<any>{
+    public static async fetchEventDetailsByHouseNameOrClientName(endPoint,houseName,clientName):Promise<any>{
         //let currentDate = new Date(new Date().setDate(new Date().getDate() - 30));
         let currentDate = new Date(new Date().setDate(new Date().getDate()));
         let currentDateString= this.moment(currentDate).utc().format("YYYY-MM-DD");
         currentDateString+="T00:00:00.000Z";
         let web=new Web(endPoint);
         let items=await web.lists.getByTitle("EventDetails").items
-        .filter(`EventFromDate gt datetime'${currentDateString}' and (Title eq '${clientName}' or Title eq '${houseName}')`)
+        .filter(`EventFromDate gt datetime'${currentDateString}' and (Title eq '${clientName}' or Title eq '${houseName}' or Title eq 'Gellibrand')`)
         .top(5000)
         .orderBy("EventFromDate",true)
         .get();

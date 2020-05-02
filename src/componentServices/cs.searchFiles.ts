@@ -17,7 +17,8 @@ export class ComponentServicesSearchFiles{
         //     DataServiceBaseFile.returnLoginEmailId());
         console.log("ClientDetails",clientDetails);
         //let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx" NOT FileExtension:"pdf") `;
-        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND MetaData3:"Pictures" `;
+        //let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND MetaData3:"Pictures" AND MetaData5:"Published" AND (FileExtension:"jpg" OR FileExtension:"jpeg" OR FileExtension:"png" OR FileExtension:"jif" OR FileExtension:"tif")`;
+        let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND MetaData3:"Pictures" AND MetaData5:"Published" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx" NOT FileExtension:"pdf" NOT FileExtension:"htm") `;
         let searchDetails=await DataServicesSearchResults.getSearchResults(connectionDetails.endPoint,kqlQuery,
             teamDetails.SearchSourceId,500,0,DataServiceBaseFile.spHttpClient,
             DataServiceBaseFile.spHttpOptions);
@@ -39,46 +40,47 @@ export class ComponentServicesSearchFiles{
                     let listItem=await DataServicesDigitalLibrary.getItemById(listEndPoint,cell.Value);
                     console.log(`${listItem.FileDirRef}/${listItem.FieldValuesAsText.FileLeafRef} ` );
                     let path=`${listItem.FileDirRef}/${listItem.FieldValuesAsText.FileLeafRef} `;
-                    let itemBlob=await DataServicesDigitalLibrary.getItemBlob(listEndPoint,path);
+                    //let itemBlob=await DataServicesDigitalLibrary.getItemBlob(listEndPoint,path);
                     let blobItem={} as any;
-                    var file = new Blob([itemBlob], {
-                        type:`application/${listItem.File_x0020_Type}`  //'application/pdf'
-                      });
-                    var fileURL = URL.createObjectURL(file);
-                    blobItem.blob=fileURL;
+                    // var file = new Blob([itemBlob], {
+                    //     type:`application/${listItem.File_x0020_Type}`  //'application/pdf'
+                    //   });
+                    // var fileURL = URL.createObjectURL(file);
+                    blobItem.blob=`https://gellibrandss.sharepoint.com/_api/v2.0/sharePoint:${path}:/driveItem/thumbnails/0/c343x457/content`;
                     blobItem.fileType=listItem.File_x0020_Type;
-                    
+                    blobItem.title=listItem.DocTitle;
+                    blobItem.description=listItem.DocDescription;
                     imageArrays.push(blobItem);
                 }
             }
         }
         console.log(imageArrays);
         //return imageArrays;
+        this.singleImageBanner=imageArrays;
+        // console.log("House Pictures Items",imageArrays);
+        // if(imageArrays.length <=5){
+        //     let counter=0;
+        //     for(let images of imageArrays){
+        //         if(counter==0){
+        //             this.singleImageBanner.push(images);
+        //         }else{
+        //             this.fourImageBanner.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
 
-        console.log("House Pictures Items",imageArrays);
-        if(imageArrays.length <=5){
-            let counter=0;
-            for(let images of imageArrays){
-                if(counter==0){
-                    this.singleImageBanner.push(images);
-                }else{
-                    this.fourImageBanner.push(images);
-                }
-                counter ++;
-            }
-        }
-
-        if(imageArrays.length >5){
-            let counter=0;
-            for(let images of imageArrays){
-                if(counter < imageArrays.length -4){
-                    this.singleImageBanner.push(images);
-                }else{
-                    this.fourImageBanner.push(images);
-                }
-                counter ++;
-            }
-        }
+        // if(imageArrays.length >5){
+        //     let counter=0;
+        //     for(let images of imageArrays){
+        //         if(counter < imageArrays.length -4){
+        //             this.singleImageBanner.push(images);
+        //         }else{
+        //             this.fourImageBanner.push(images);
+        //         }
+        //         counter ++;
+        //     }
+        // }
 
         // if(imageArrays.length >5 && imageArrays.length <=8){
         //     let counter=0;
