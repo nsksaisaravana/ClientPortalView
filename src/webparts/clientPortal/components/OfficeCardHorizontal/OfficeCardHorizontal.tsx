@@ -57,7 +57,17 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
         <div className="ms-Grid-col ms-hiddenLgDown">
           <Card horizontal onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
             <Card.Item fill>
-              <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:200,width:343}}  />
+              <div 
+              style={{ 
+              height: '200px', 
+              width: '343px', 
+              backgroundColor: '#e6e6e69c', 
+              backgroundSize: 'contain', 
+              backgroundImage: `url(${this.props.teamItem.blob})`, 
+              backgroundRepeat: 'no-repeat', 
+              backgroundPosition: 'center'  }}
+              />
+              {/* <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:200,width:343}}  /> */}
             </Card.Item>
             <Card.Section>
               <Text variant="large" styles={siteTextStyles}>
@@ -70,7 +80,17 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
         <div className="ms-Grid-col  ms-hiddenLgUp">
           <Card  onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
             <Card.Item fill>
-              <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:100,width:235}} />
+              {/* <Image  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:100,width:235}} /> */}
+              <div 
+              style={{ 
+              height: '100px', 
+              width: '235px', 
+              backgroundColor: '#e6e6e69c', 
+              backgroundSize: 'contain', 
+              backgroundImage: `url(${this.props.teamItem.blob})`, 
+              backgroundRepeat: 'no-repeat', 
+              backgroundPosition: 'center'  }}
+              />
             </Card.Item>
             <Card.Section>
               <Text variant="large" styles={siteTextStyles}>
