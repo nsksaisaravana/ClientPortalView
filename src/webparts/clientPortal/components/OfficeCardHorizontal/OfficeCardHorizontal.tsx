@@ -57,9 +57,17 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
         <div className="ms-Grid-col ms-hiddenMdDown" style={{ marginTop: '14px', padding: '0 16px' }}>
           <Card horizontal onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens} >
             <Card.Item fill>
+
+              {/* Full Height */}
               <div style={{ height: '200px', width: '343px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
-                <img  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:'100%'}} />
+                <img  src={this.props.teamItem.blob} alt="" style={{height:'100%'}} />
               </div>
+
+              {/* Full Width */}
+              {/* <div style={{ height: '200px', width: '343px', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', backgroundColor: '#e6e6e654', overflow: 'hidden' }}>
+                <img  src={this.props.teamItem.blob} alt="" style={{width:'100%', minHeigh: '200px'}} />
+              </div> */}
+
             </Card.Item>
             <Card.Section>
               <Text variant="large" styles={siteTextStyles}>
@@ -72,9 +80,17 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
         <div className="ms-Grid-col  ms-hiddenLgUp">
           <Card  onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
             <Card.Item fill>
+
+              {/* Full Height */}
               <div style={{ height: '130px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
-                <img  src={this.props.teamItem.blob} alt="Placeholder image." style={{height:'100%'}} />
+                <img  src={this.props.teamItem.blob} alt="" style={{height:'100%'}} />
               </div>
+
+              {/* Full Width */}
+              {/* <div style={{ height: '130px', maxWidth: '235px', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', backgroundColor: '#e6e6e654', overflow: 'hidden' }}>
+                <img  src={this.props.teamItem.blob} alt="" style={{width:'100%'}} />
+              </div> */}
+
             </Card.Item>
             <Card.Section>
               <Text variant="large" styles={siteTextStyles}>
