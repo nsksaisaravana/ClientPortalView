@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { Label, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { Label, ILabelStyles } from '@fluentui/react';
+import { Pivot, PivotItem } from '@fluentui/react';
+import { IStyleSet } from '@fluentui/react';
 import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard,DynamicCarousel,ImageHorizontal} from '../index';
 import {IOfficePivotStateValues,IOfficePivotPropValues} from './index';
 import './OfficePivot.module.scss';
 import parse from 'html-react-parser';
 import ResizeImage from 'react-resize-image';
 import { MyDocsAntDataTable } from '../AntDataTable';
-import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from '@fluentui/react';
+import 'office-ui-fabric-react/dist/css/fabric.css';
 const stackItemStyle : IStackItemStyles = {
     root: {
       width: '100%'
@@ -255,11 +256,26 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                     {/* <PrimeDataTable propShowFilter={false} propClientDetails={this.state.clientInvoiceDetails}></PrimeDataTable> */}
                     <MyDocsAntDataTable propDownloadClick={[]} propMyDocsDetails={this.props.propClientDocuments}></MyDocsAntDataTable>
                 </PivotItem>
+                <PivotItem headerText="Terms of Use">
+                    <div className="row">
+                        <div className="col">
+                            <iframe src={'/sites/Intranet/SiteAssets/Gellibrand Support Service.pdf'} width="100%" height="750"></iframe>
+                        </div>
+                    </div>
+                    
+                </PivotItem>
+                <PivotItem headerText="Comments and Feedback" onClick={this.redirectToComments}>
+                    <div><a href="http://gellibrand.org.au/concerns-compliments/">Please click for Comments and Feedback</a></div>
+                </PivotItem>
                 {/* <PivotItem headerText="ITEMS FOR REVIEW">
                     <Label styles={labelStyles}>Pivot #3</Label>
                 </PivotItem> */}
             </Pivot>
         );
+    }
+
+    private redirectToComments=()=>{
+        window.open("http://gellibrand.org.au/concerns-compliments/ ",'_blank');
     }
 
 

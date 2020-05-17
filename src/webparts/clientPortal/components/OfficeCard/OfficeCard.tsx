@@ -22,7 +22,7 @@ import {
   IStackTokens,
   Text,
   ITextStyles
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, {}> {
 

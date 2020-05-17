@@ -7,7 +7,7 @@ import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews, ComponentC
   ComponentContextHousePictures,ComponentContextClientDocuments,
   ComponentServicesEventDetails} from '../../../../componentServices/index';
 import { DataServiceBaseFile } from '../../../../dataServicesServices';
-import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from '@fluentui/react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 const stackItemStyles: IStackItemStyles = {
@@ -74,14 +74,13 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
          {/* <Stack horizontal horizontalAlign="space-between" styles={stackStyles}> */}
          <Stack horizontal horizontalAlign="space-between" verticalAlign='center' style={{ padding: '0 12px', color: 'white', background: '#266ead' }}>
           <span>
-            <img src={'/sites/Intranet/SiteAssets/__sitelogo__Gellibrand.png'} style={{height:54,width:148}}/>
+            <img src={'/sites/Intranet/SiteAssets/Gellibrand_real_emblem250.gif'} style={{height:54,width:148}}/>
           </span>
           <span style={{ fontSize: '28px' }} ><b>Client Portal</b></span>
           <span style={{ textAlign: 'right' }} >Welcome<br></br><b>{this.state.loginUserName}</b></span>
         </Stack>
         </div>
-        <div className="ms-hiddenLgUp" style={{ padding: '0px 12px 6px', color: 'white', background: '#266ead', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-         {/* <Stack horizontal horizontalAlign="space-between" styles={stackStyles}> */}
+        {/* <div className="ms-hiddenLgUp" style={{ padding: '0px 12px 6px', color: 'white', background: '#266ead', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
          <div style={{ display: 'flex', flexDirection: 'column' }}>
          <span>
             <img src={'/sites/Intranet/SiteAssets/__sitelogo__Gellibrand.png'} style={{height:44,width:122}}/>
@@ -89,7 +88,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
           <span style={{ fontSize: '24px' }} ><b>Client Portal</b></span>
          </div>
          <span style={{ textAlign: 'right' }} >Welcome<br></br><b>{this.state.loginUserName}</b></span>
-        </div>
+        </div> */}
           <div className="ms-Grid-row" style={{display:this.state.clientNameDetails.length>1  ? '' : 'none', padding: '20px 10px 10px', margin: '0px', background: '#1bb7ea'}}>
             <AntDropdown propDefaultValue={this.state.clientSelectedName} propDropdownValues={this.state.clientNameDetails} propSetBlankValue={""} 
               propDropdownValuesPlaceHolder="" propDocumentCompleted={this.dropDownCompleted} propDropdownIndexChanged={this.dropDownIndexChanged}

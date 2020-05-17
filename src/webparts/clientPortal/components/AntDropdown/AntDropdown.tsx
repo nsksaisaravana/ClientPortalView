@@ -1,7 +1,7 @@
 import * as React from 'react';
 import  Select  from 'antd/es/select';
 import {IAntDropdownProps,IAntDropdownState} from './index';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
+import { Spinner, SpinnerSize } from '@fluentui/react';
 //import { ComponentContextStoreUserInputs, ComponentContextSetUserUploadValues } from '../../../../componentsContextServices';
 const { Option } = Select;
 const children = [];

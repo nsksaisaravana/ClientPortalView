@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
-import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from  '@fluentui/react';
 import {IOfficeDocumentCardHorizontalPropValues} from './index';
+import 'office-ui-fabric-react/dist/css/fabric.css';
 
 export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHorizontalPropValues, {}> {
 
@@ -59,14 +60,14 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
             <Card.Item fill>
 
               {/* Full Height */}
-              <div style={{ height: '200px', width: '343px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
+              {/* <div style={{ height: '200px', width: '343px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
                 <img  src={this.props.teamItem.blob} alt="" style={{height:'100%'}} />
-              </div>
-
-              {/* Full Width */}
-              {/* <div style={{ height: '200px', width: '343px', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', backgroundColor: '#e6e6e654', overflow: 'hidden' }}>
-                <img  src={this.props.teamItem.blob} alt="" style={{width:'100%', minHeigh: '200px'}} />
               </div> */}
+
+              {/* Full Width , minHeight: '200px' */}
+              <div style={{ height: '200px', width: '343px', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', backgroundColor: '#e6e6e654', overflow: 'hidden' }}>
+                <img  src={this.props.teamItem.blob} alt="" style={{width:'100%'}} />
+              </div>
 
             </Card.Item>
             <Card.Section>
@@ -77,19 +78,19 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
             </Card.Section>
           </Card>
         </div>
-        <div className="ms-Grid-col  ms-hiddenLgUp">
+        {/* <div className="ms-Grid-col  ms-hiddenLgUp">
           <Card  onClick={()=>this.alertClicked(this.props.teamItem)} tokens={cardTokens}>
-            <Card.Item fill>
+            <Card.Item fill> */}
 
               {/* Full Height */}
-              <div style={{ height: '130px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
+              {/* <div style={{ height: '130px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6e654' }}>
                 <img  src={this.props.teamItem.blob} alt="" style={{height:'100%'}} />
-              </div>
+              </div> */}
 
               {/* Full Width */}
               {/* <div style={{ height: '130px', maxWidth: '235px', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', backgroundColor: '#e6e6e654', overflow: 'hidden' }}>
                 <img  src={this.props.teamItem.blob} alt="" style={{width:'100%'}} />
-              </div> */}
+              </div>
 
             </Card.Item>
             <Card.Section>
@@ -99,7 +100,7 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
               <Text styles={descriptionTextStyles}>{this.props.teamItem.description ?`${this.props.teamItem.description.substring(0,20)}...`:'' }</Text>
             </Card.Section>
           </Card>
-        </div>
+        </div> */}
       </Stack>
       </div>
     );

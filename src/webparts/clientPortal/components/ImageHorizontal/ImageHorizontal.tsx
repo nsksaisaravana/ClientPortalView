@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
-import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from '@fluentui/react';
 import {IImageHorizontalPropValues} from './index';
 
 export  class ImageHorizontal extends React.Component<IImageHorizontalPropValues, {}> {
