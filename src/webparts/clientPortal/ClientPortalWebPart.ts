@@ -16,7 +16,8 @@ import { SPComponentLoader } from '@microsoft/sp-loader';
 import * as jQuery from "jquery";
 import { sp } from "@pnp/sp";
 import { initializeIcons } from '@fluentui/react';
-import 'office-ui-fabric-react/dist/css/fabric.css';
+// import 'office-ui-fabric-react/dist/css/fabric.css';
+import '../../../node_modules/office-ui-fabric-core/dist/css/fabric.min.css';
 export interface IClientPortalWebPartProps {
   description: string;
 }
