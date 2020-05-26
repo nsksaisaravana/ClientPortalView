@@ -20,7 +20,7 @@ export class ComponentServicesSearchFiles{
         //let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND MetaData3:"Pictures" AND MetaData5:"Published" AND (FileExtension:"jpg" OR FileExtension:"jpeg" OR FileExtension:"png" OR FileExtension:"jif" OR FileExtension:"tif")`;
         let kqlQuery=`SearchName:${connectionDetails.library} AND MetaData2:"${clientDetails[0].ClientName.Title}" AND MetaData3:"Pictures" AND MetaData5:"Published" AND (NOT FileExtension:"docx" NOT FileExtension:"xlsx" NOT FileExtension:"pptx" NOT FileExtension:"pdf" NOT FileExtension:"htm") `;
         let searchDetails=await DataServicesSearchResults.getSearchResults(connectionDetails.endPoint,kqlQuery,
-            teamDetails.SearchSourceId,500,0,DataServiceBaseFile.spHttpClient,
+            teamDetails.SearchSourceId,10,0,DataServiceBaseFile.spHttpClient,
             DataServiceBaseFile.spHttpOptions);
         return this.fetchItemImageUrl(connectionDetails.endPoint,searchDetails.Table.Rows);
 
@@ -51,6 +51,7 @@ export class ComponentServicesSearchFiles{
                     blobItem.fileType=listItem.File_x0020_Type;
                     blobItem.title=listItem.DocTitle;
                     blobItem.description=listItem.DocDescription;
+                    blobItem.url=listItem.SitePageUrl;
                     imageArrays.push(blobItem);
                 }
             }
