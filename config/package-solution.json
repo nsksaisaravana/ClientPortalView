@@ -3,9 +3,10 @@
   "solution": {
     "name": "client-portal-view-client-side-solution",
     "id": "07d1af16-60d5-4c02-a998-e2d577db5bf3",
-    "version": "1.0.0.30",
+    "version": "1.0.0.32",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "skipFeatureDeployment": true
   },
   "paths": {
     "zippedPackage": "solution/client-portal-view.sppkg"
