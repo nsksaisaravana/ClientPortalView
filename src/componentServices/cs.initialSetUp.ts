@@ -22,5 +22,23 @@ export class ComponentContextInitialSetUpDetails{
         return this.clientDetails;
     }
 
+    public static async getSuperAdmin(){
+        let teamDetails=this.returnTeam();
+        let connectionDetails=ComponentContextConnectionString.setLibraryAndEndPoint(teamDetails);
+        let superAdmin=await DataServicesClientNames.getSuperAdmin(connectionDetails.endPoint,
+            DataServiceBaseFile.returnLoginEmailId());
+        if(superAdmin && superAdmin.length >0){
+            return true;
+        }
+        return false;
+    }
+
+    public static async getAllClientNames(){
+        let teamDetails=this.returnTeam();
+        let connectionDetails=ComponentContextConnectionString.setLibraryAndEndPoint(teamDetails);
+        let allClientNames=await DataServicesClientNames.getAllClientNames(connectionDetails.endPoint);
+        return allClientNames;
+    }
+
 
 }

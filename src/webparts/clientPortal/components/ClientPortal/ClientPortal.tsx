@@ -5,7 +5,8 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import { Spinner,OfficePivot,AntDropdown} from '../index';
 import {ComponentServicesSearchFiles,ComponentServicesGellibrandNews, ComponentContextInitialSetUpDetails, 
   ComponentContextHousePictures,ComponentContextClientDocuments,
-  ComponentServicesEventDetails} from '../../../../componentServices/index';
+  ComponentServicesEventDetails,
+  ComponentContextInitializeObjects} from '../../../../componentServices/index';
 import { DataServiceBaseFile } from '../../../../dataServicesServices';
 import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from '@fluentui/react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
@@ -122,12 +123,23 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
 
 
   public componentDidMount(){
-    this.pageLoad();
+    //this.pageLoad();
+    this.checkSuperAdminAndProcess();
     this.getUserDetails();
   }
 
   public dropDownCompleted=(value)=>{
     console.log(value);
+  }
+
+  public async checkSuperAdminAndProcess(){
+    let superAdmin=await ComponentContextInitialSetUpDetails.getSuperAdmin();
+    // if(superAdmin==true){
+    //   let allClientNames=await ComponentContextInitialSetUpDetails.getAllClientNames();
+    // }else{
+    //   this.pageLoad();
+    // }
+    this.pageLoad(superAdmin);
   }
 
   public  getUserDetails=async ()=>{
@@ -146,8 +158,14 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     ]);
   }
 
-  public async pageLoad(){
-    this.clientDetails=await ComponentContextInitialSetUpDetails.getClientNameByEmailId();
+
+  public async pageLoad(superAdmin){
+    if(superAdmin==true){
+      this.clientDetails=await ComponentContextInitialSetUpDetails.getAllClientNames();
+    }else{
+      this.clientDetails=await ComponentContextInitialSetUpDetails.getClientNameByEmailId();
+    }
+    
     // await Promise.all([this.getGellibrandNews(),this.getClientFiles(clientDetails),
     //   this.getHouseNews(clientDetails),this.getClientDocuments(clientDetails),
     //   this.getEventDetails(clientDetails)]);
