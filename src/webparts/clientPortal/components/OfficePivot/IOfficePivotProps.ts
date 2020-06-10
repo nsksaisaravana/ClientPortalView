@@ -1,6 +1,8 @@
 
 export interface IOfficePivotStateValues{
     clientInvoiceDetails:any;
+    hiddenPreviewPage:boolean;
+    aspxFilePath:string;
 }
 
 

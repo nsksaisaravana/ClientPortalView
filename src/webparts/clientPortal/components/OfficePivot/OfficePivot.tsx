@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Label, ILabelStyles } from '@fluentui/react';
 import { Pivot, PivotItem } from '@fluentui/react';
 import { IStyleSet } from '@fluentui/react';
-import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,PrimeCard,DynamicCarousel,ImageHorizontal} from '../index';
+import {BootstrapCarousel,OfficeDocumentCardCompact,PrimeDataTable,OfficeCard,OfficeCardHorizontal,
+    PrimeCard,DynamicCarousel,ImageHorizontal,AspxPreview} from '../index';
 import {IOfficePivotStateValues,IOfficePivotPropValues} from './index';
 import './OfficePivot.module.scss';
 import parse from 'html-react-parser';
@@ -10,6 +11,7 @@ import ResizeImage from 'react-resize-image';
 import { MyDocsAntDataTable } from '../AntDataTable';
 import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from '@fluentui/react';
 import 'office-ui-fabric-react/dist/css/fabric.css';
+
 const stackItemStyle : IStackItemStyles = {
     root: {
       width: '100%'
@@ -32,13 +34,16 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                 {
                     "title":"File2"
                 }
-            ]
+            ],
+            hiddenPreviewPage:true,
+            aspxFilePath:''
         };
        
     }
 
     public render(): JSX.Element {
         return (
+            <div>
             <Pivot>
                 <PivotItem
                 headerText="Gellibrand PIC & NEWS"
@@ -52,7 +57,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                         <Stack style={{width:'100%'}} tokens={sectionStackTokens}>
                         {this.props.propSingleImageBannerForGellibrandNews.map(item=>(
                                 <Stack.Item styles={stackItemStyle}>
-                                    <OfficeCardHorizontal teamItem={item}></OfficeCardHorizontal>
+                                    <OfficeCardHorizontal teamItem={item} clickItem={this.navigateAspxPagePath}></OfficeCardHorizontal>
                                 </Stack.Item>
                             ))}
                         </Stack>
@@ -123,7 +128,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                         <Stack style={{width:'100%'}} tokens={sectionStackTokens}>
                         {this.props.propSingleImageBannerForHouseNews.map(item=>(
                                 <Stack.Item styles={stackItemStyle}>
-                                    <OfficeCardHorizontal teamItem={item}></OfficeCardHorizontal>
+                                    <OfficeCardHorizontal teamItem={item} clickItem={this.navigateAspxPagePath}></OfficeCardHorizontal>
                                 </Stack.Item>
                             ))}
                         </Stack>
@@ -171,7 +176,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                         <Stack style={{width:'100%'}} tokens={sectionStackTokens}>
                             {this.props.propSingleImageBannerForMyPictures.map(item=>(
                                 <Stack.Item styles={stackItemStyle}>
-                                    <OfficeCardHorizontal teamItem={item}></OfficeCardHorizontal>
+                                    <OfficeCardHorizontal teamItem={item} clickItem={this.navigateAspxPagePath}></OfficeCardHorizontal>
                                 </Stack.Item>
                             ))}
                         </Stack>
@@ -271,7 +276,18 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                     <Label styles={labelStyles}>Pivot #3</Label>
                 </PivotItem> */}
             </Pivot>
+            <AspxPreview propFilePath={this.state.aspxFilePath}
+                propTitle={""} propSubText={""} propHidePreviewDialog={this.state.hiddenPreviewPage} propConfirmClickEvent={this.closePreviewPage}></AspxPreview>
+            </div>
         );
+    }
+
+    public closePreviewPage=()=>{
+        this.setState({hiddenPreviewPage:true});
+    }
+
+    public navigateAspxPagePath=(path)=>{
+        this.setState({aspxFilePath:path,hiddenPreviewPage:false});
     }
 
     private redirectToComments=()=>{

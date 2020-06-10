@@ -12,3 +12,4 @@ export * from './ProgressIndicator';
 export * from './AntDataTable';
 export * from './ImageHorizontal';
 export * from './AntDropdown';
+export * from './AspxPreview';

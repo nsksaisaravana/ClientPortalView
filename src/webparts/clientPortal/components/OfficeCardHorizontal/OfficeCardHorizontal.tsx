@@ -108,8 +108,11 @@ export  class OfficeCardHorizontal extends React.Component<IOfficeDocumentCardHo
     }
 
   public alertClicked(item){
-    window.open(item.url);
+    //window.open(item.url);
+    this.props.clickItem(item.url);
   }
+
+
 
 
 }
