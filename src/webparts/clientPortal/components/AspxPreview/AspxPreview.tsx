@@ -5,6 +5,7 @@ import {IAspxPreviewPopertyValues} from './index';
 import { PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Modal, IDragOptions, ContextualMenu,getTheme,FontWeights,FontSizes,mergeStyleSets } from 'office-ui-fabric-react';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+
 // import * as PDFViewer from 'pdf-viewer-reactjs';
 // import * as PDFReader from 'react-typescript-pdf-reader'
 const theme = getTheme();
@@ -72,12 +73,13 @@ export  class AspxPreview extends React.Component<IAspxPreviewPopertyValues, {}>
         super(props);
         this.state={
             hideDialog: true,
-            isDraggable: false
+            isDraggable: false,
         };
     }
 
 
     public render(): React.ReactElement<any> {
+      //const { numPages } = this.state;
         return(
             <div>
                 {/* <Dialog
@@ -140,6 +142,7 @@ export  class AspxPreview extends React.Component<IAspxPreviewPopertyValues, {}>
                         <div id={this._subTextId} className={contentStyles.body}>
                             <iframe src={this.props.propFilePath}  width="500" height="750"></iframe>
                         </div>
+                       
                       </Panel>
             </div>
         );

@@ -3,6 +3,9 @@ export interface IOfficePivotStateValues{
     clientInvoiceDetails:any;
     hiddenPreviewPage:boolean;
     aspxFilePath:string;
+    numPages:any,
+    pageNumber:number
+    filePath:string;
 }
 
 

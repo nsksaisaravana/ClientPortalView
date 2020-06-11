@@ -5,6 +5,7 @@ import {
     SPHttpClientResponse,
     ISPHttpClientOptions,
   } from '@microsoft/sp-http';
+  import { HttpClient } from '@microsoft/sp-http';
 
 export class DataServiceBaseFile{
 
@@ -17,6 +18,15 @@ export class DataServiceBaseFile{
       this.userEmail=spContext.pageContext.user.email;
       this.spHttpClient=spContext.spHttpClient;
     }
+
+    public static async returnReponse(file){
+      const response = await this.spContext.httpClient.get(file, HttpClient.configurations.v1);
+      if (response.ok) {
+          const blob = await response.blob();
+          return blob;
+      }
+      return null;
+  }  
 
     public static returnLoginEmailId(){
       return this.userEmail;
