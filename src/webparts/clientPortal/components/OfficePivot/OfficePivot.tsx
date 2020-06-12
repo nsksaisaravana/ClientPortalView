@@ -11,8 +11,10 @@ import ResizeImage from 'react-resize-image';
 import { MyDocsAntDataTable } from '../AntDataTable';
 import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from '@fluentui/react';
 import 'office-ui-fabric-react/dist/css/fabric.css';
-import { Document, Page } from 'react-pdf';
+// import { Document, Page } from 'react-pdf';
 import {DataServiceBaseFile} from '../../../../dataServicesServices/index';
+import FileViewer from 'react-file-viewer';
+
 const stackItemStyle : IStackItemStyles = {
     root: {
       width: '100%'
@@ -40,7 +42,8 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
             aspxFilePath:'',
             numPages:null,
             pageNumber:1,
-            filePath:''
+            filePath:'https://gellibrandss.sharepoint.com//sites/Intranet/SiteAssets/Gellibrand Support Service.pdf',
+
         };
        
     }
@@ -279,22 +282,16 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
                     {/* <PrimeDataTable propShowFilter={false} propClientDetails={this.state.clientInvoiceDetails}></PrimeDataTable> */}
                     <MyDocsAntDataTable propDownloadClick={[]} propMyDocsDetails={this.props.propClientDocuments}></MyDocsAntDataTable>
                 </PivotItem>
-                <PivotItem headerText="Terms of Use" onClick={this.loadFile}>
+                <PivotItem headerText="Terms of Use">
                     <div className="row">
                         <div className="col">
-                            <iframe src={'https://gellibrandss.sharepoint.com/sites/Intranet/SiteAssets/Gellibrand Support Service.pdf'} width="100%" height="750"></iframe>
-                            {/* <div>
-                                <Document
-                                    file={this.state.filePath}
-                                    onLoadSuccess={({ numPages })=>this.setState(numPages)}>
-
-                                        // Showing page 1,2,3,10,11,12
-                                        {[1].map(page => (
-                                            <Page pageNumber={page} />
-                                        ))}
-
-                                </Document>
-                        </div> */}
+                            {/* <iframe src={'https://gellibrandss.sharepoint.com/sites/Intranet/SiteAssets/Gellibrand Support Service.pdf'} width="100%" height="750"></iframe> */}
+                            <div>
+                                <FileViewer
+                                fileType={'pdf'}
+                                filePath={this.state.filePath}
+                                />
+                            </div> 
                         </div>
                     </div>
                     
