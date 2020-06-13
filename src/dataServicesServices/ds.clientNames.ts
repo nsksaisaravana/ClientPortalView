@@ -17,7 +17,8 @@ export class DataServicesClientNames{
     public static getSuperAdmin(recordPoint,emailId){
         let web = new Web(recordPoint);
         return web.lists.getByTitle("SuperAdmin").items
-            .filter(`Title eq '${emailId}' and Enabled eq 1`).get()
+            //.filter(`Title eq '${emailId}' and Enabled eq 1`).get()
+            .get()
             .then((items)=>{
                 console.log(items);
                 return items;
