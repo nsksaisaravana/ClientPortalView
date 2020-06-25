@@ -154,7 +154,8 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     console.log(value);
     let clientItem=this.clientDetails.filter(item=> item.ClientName.Title==value);
     await Promise.all([this.getClientFiles(clientItem),
-      this.getHouseNews(clientItem),this.getClientDocuments(clientItem)
+      this.getHouseNews(clientItem),this.getClientDocuments(clientItem),
+      this.getEventDetails(clientItem)
     ]);
   }
 

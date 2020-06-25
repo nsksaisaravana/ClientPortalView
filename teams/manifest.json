@@ -3,7 +3,7 @@
     "manifestVersion": "1.5",
     "packageName": "ClientPortalWebPart",
     "id": "f68075c2-6738-4a4d-9d66-d4aa5e591217",
-    "version": "0.1",
+    "version": "0.4",
     "developer": {
       "name": "Parker Porcupine",
       "websiteUrl": "https://products.office.com/sharepoint/collaboration",
@@ -11,11 +11,11 @@
       "termsOfUseUrl": "https://www.microsoft.com/servicesagreement"
     },
     "name": {
-      "short": "ClientPortal"
+      "short": "CPG"
     },
     "description": {
-      "short": "ClientPortal description",
-      "full": "ClientPortal description"
+      "short": "Portal for clients",
+      "full": "Portal for clients"
     },
     "icons": {
       "outline": "f68075c2-6738-4a4d-9d66-d4aa5e591217_outline.png",
@@ -25,7 +25,7 @@
     "staticTabs": [
       {
         "entityId": "com.contoso.personaltab.spfx",
-        "name": "My SPFx Personal Tab",
+        "name": "Client",
         "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=f68075c2-6738-4a4d-9d66-d4aa5e591217%26forceLocale={locale}",
         "scopes": [
           "personal"
