@@ -64,10 +64,19 @@ export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, 
       };
       const backgroundImageCardSectionStyles: ICardSectionStyles = {
         root: {
-          backgroundImage: 'url(https://placehold.it/256x144)',
+          // backgroundImage: 'url(https://placehold.it/256x144)',
+          // backgroundPosition: 'center center',
+          // backgroundSize: 'cover',
+          // height: 144
+          backgroundColor:'rgba(0, 0, 0, 0.08)',
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
-          height: 144
+          height: 144,
+          width:'100%',
+          fontWeight:100,
+          borderColor:'red',
+          border:'5',
+          borderRadius:'2'
         }
       };
       const dateTextStyles: ITextStyles = {
@@ -113,7 +122,8 @@ export  class OfficeCard extends React.Component<IOfficeDocumentCardPropValues, 
 
         return (
           <div >
-          <Card onClick={this.alertClicked} tokens={cardTokens}  style={{display:'block',marginLeft:'auto',marginRight:'auto' }}>
+          {/* <Card onClick={this.alertClicked} tokens={cardTokens}  style={{display:'block',marginLeft:'auto',marginRight:'auto' }}> */}
+          <Card onClick={this.alertClicked} tokens={cardTokens} >
           <Card.Section fill verticalAlign="end" styles={backgroundImageCardSectionStyles} tokens={backgroundImageCardSectionTokens}>
             <Text variant="large" styles={dateTextStyles}>
               {this.props.propEventMonth}
