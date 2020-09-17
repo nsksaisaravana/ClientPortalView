@@ -47,8 +47,10 @@ export default class ClientPortalWebPart extends BaseClientSideWebPart<IClientPo
     jQuery("#workbenchPageContent").prop("style", "max-width: none");
     // jQuery(".SPCanvas-canvas").prop("style", "max-width: none");
     // jQuery(".CanvasZone").prop("style", "max-width: none");
-
-
+    jQuery("div[data-automation-id=pageHeader]").hide();
+    jQuery("div[data-automation-id=visibleContent]").hide();
+    jQuery("#O365_NavHeader").hide();
+    jQuery("#O365_NavHeader").prop("style", "dispaly: none");
     const element: React.ReactElement<IClientPortalProps > = React.createElement(
       ClientPortal,
       {

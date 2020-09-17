@@ -78,7 +78,7 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
             <img src={'/sites/Intranet/SiteAssets/GellibrandClientPortalLogo.png'}/>
           </span>
           <span style={{ fontSize: '28px' }} ><b>Family Portal</b></span>
-          <span style={{ textAlign: 'right' }} >Welcome<br></br><b>{this.state.loginUserName}</b></span>
+          <span style={{ textAlign: 'right' }} ><a style={{ color: 'white' }} href="https://www.microsoft.com" target="_self">Sign Out</a><br></br><b>{this.state.loginUserName}</b></span>
         </Stack>
         </div>
         <div className="ms-hiddenLgUp" style={{ padding: '0px 12px 6px', color: 'white', background: '#266ead', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
@@ -126,6 +126,10 @@ export default class ClientPortal extends React.Component<IClientPortalProps, IC
     //this.pageLoad();
     this.checkSuperAdminAndProcess();
     this.getUserDetails();
+  }
+
+  public logOut(){
+    window.open("https://www.microsoft.com/");
   }
 
   public dropDownCompleted=(value)=>{
